@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="63bbe65f-eebc-44bc-ab72-b3b122e34a1a" name="ssiuapi" url="jdbc:postgresql://localhost:5432/vtys" driverClass="org.postgresql.Driver" />
+      <data-source id="81a623f1-e1d5-4c47-972f-dc39e1186e85" name="vtys" url="jdbc:postgresql://postgres/vtys" driverClass="org.postgresql.Driver" />
+    </data-sources>
+  </component>
+</project>
