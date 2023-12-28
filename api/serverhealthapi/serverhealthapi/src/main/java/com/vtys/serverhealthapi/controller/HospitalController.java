@@ -2,6 +2,7 @@ package com.vtys.serverhealthapi.controller;
 
 import com.vtys.serverhealthapi.dto.HospitalDto;
 import com.vtys.serverhealthapi.dto.LocationDto;
+import com.vtys.serverhealthapi.entity.Hospitals;
 import com.vtys.serverhealthapi.repo.HospitalsRepository;
 import com.vtys.serverhealthapi.service.HospitalService;
 import com.vtys.serverhealthapi.service.LocationService;
@@ -16,9 +17,11 @@ import java.util.List;
 public class HospitalController {
 
     private final HospitalService hospitalService;
+    private  final HospitalsRepository hospitalsRepository;
 
-    public HospitalController(HospitalService hospitalService) {
+    public HospitalController(HospitalService hospitalService, HospitalsRepository hospitalsRepository) {
         this.hospitalService = hospitalService;
+        this.hospitalsRepository = hospitalsRepository;
     }
 
     @PostMapping("/create")
@@ -39,6 +42,11 @@ public class HospitalController {
     @GetMapping("/getbycityid/{cityid}")
     public ResponseEntity<List<HospitalDto>> getByCityId(@PathVariable Integer cityid) {
         return ResponseEntity.ok(hospitalService.getHospitalByCityId(cityid));
+    }
+
+    @GetMapping("/getbyhospitalname")
+    public List<Hospitals> getByHospitalName(@RequestParam String hospitalname) {
+        return hospitalsRepository.findByHospitalnameContainingIgnoreCase(hospitalname);
     }
 
 

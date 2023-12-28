@@ -10,5 +10,7 @@ import java.util.List;
 public interface HospitalsRepository extends JpaRepository<Hospitals, Integer> {
 
     List<Hospitals> findByCityid_Cityid(Integer cityId);
+
+    List<Hospitals> findByHospitalnameContainingIgnoreCase(String hospitalname);
 }
 

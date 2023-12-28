@@ -32,12 +32,12 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public List<LocationDto> getAllLocations() {
-        List<Locations> locations = locationRepository.findAll();
-        List<LocationDto> locationDtos = new ArrayList<>();
+    public List<Locations> getAllLocations() {
+        return locationRepository.findAll();
+    }
 
-        for (Locations location : locations) {
-            locationDtos.add(modelMapper.map(location, LocationDto.class));
-        }
-        return locationDtos;    }
+    @Override
+    public Locations getByCityid(Integer locationid) {
+        return locationRepository.getByCityid(locationid);
+    }
 }

@@ -1,6 +1,7 @@
 package com.vtys.serverhealthapi.controller;
 
 import com.vtys.serverhealthapi.dto.LocationDto;
+import com.vtys.serverhealthapi.entity.Locations;
 import com.vtys.serverhealthapi.service.LocationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +19,14 @@ public class LocationController {
     }
 
     @GetMapping("/getall")
-    public ResponseEntity<List<LocationDto>> getAll() {
-        return ResponseEntity.ok(locationservice.getAllLocations());
+    public List<Locations> getAll() {
+        return locationservice.getAllLocations();
     }
 
+
     @GetMapping("/getbyid/{id}")
-    public ResponseEntity<LocationDto> getById(@PathVariable Integer id) {
-        return ResponseEntity.ok(locationservice.getLocationById(id));
+    public Locations getById(@PathVariable Integer id) {
+        return locationservice.getByCityid(id);
     }
 
 }

@@ -1,11 +1,7 @@
 package com.vtys.serverhealthapi.service.impl;
 
 import com.vtys.serverhealthapi.dto.HospitalDto;
-import com.vtys.serverhealthapi.dto.LocationDto;
-import com.vtys.serverhealthapi.dto.UserDto;
 import com.vtys.serverhealthapi.entity.Hospitals;
-import com.vtys.serverhealthapi.entity.Locations;
-import com.vtys.serverhealthapi.entity.Users;
 import com.vtys.serverhealthapi.repo.HospitalsRepository;
 import com.vtys.serverhealthapi.repo.LocationsRepository;
 import com.vtys.serverhealthapi.service.HospitalService;
@@ -15,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -80,6 +75,13 @@ public class HospitalServiceImpl implements HospitalService {
 
         return hospitalDtos;
     }
+
+    @Override
+    public List<Hospitals> findByHospitalnameContainingIgnoreCase(String hospitalName) {
+        return hospitalsRepository.findByHospitalnameContainingIgnoreCase(hospitalName);
+    }
+
+
 
 
 }
