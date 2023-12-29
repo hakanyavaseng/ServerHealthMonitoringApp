@@ -1,5 +1,6 @@
 package com.vtys.serverhealthapi.dto;
 
+import com.vtys.serverhealthapi.entity.Hospitals;
 import lombok.Data;
 
 @Data
@@ -8,8 +9,8 @@ public class ServerDto {
         private String servername;
         private String serverip;
         private String serveros;
-        private String serverram;
-        private String serverstoragetype;
-        private String serverstoragecapacity;
-        private Integer hospitalid;
+        private String server_ram;
+        private String serverStorageType;
+        private String serverStorageCapacity;
+        private Integer hospitalid; // Only include the hospital ID
 }

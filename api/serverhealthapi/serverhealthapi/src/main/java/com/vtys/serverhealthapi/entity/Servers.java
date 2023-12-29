@@ -1,5 +1,6 @@
 package com.vtys.serverhealthapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,18 +32,24 @@ public class Servers {
     private String serverStorageType;
     private String serverStorageCapacity;
 
+
+    //TODO JSON IGNOORE YAPILDI, HATA VEREBİLİR İLERİDE
+
+    @JsonIgnore
     @OneToMany
-    @JoinColumn(name = "cityid")
+    @JoinColumn(name = "dataid")
     private List<Healthdata> healthdataList;
 
+    @JsonIgnore
     @OneToMany
     @JoinColumn(name = "interruptid")
     private List<Interrupts> interruptsList;
 
     @ManyToOne
     @JoinColumn(name = "hostpitalid")
-    private Hospitals hastaneid;
+    private Hospitals hostpitalid;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "serversList")
     private List<Users> usersList;
 

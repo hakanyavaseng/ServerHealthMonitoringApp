@@ -25,8 +25,6 @@ public class Hospitals {
     @JoinColumn(name = "cityid")
     private Locations cityid;
 
-    @OneToMany
-    @JoinColumn(name = "serverid")
-    private List<Servers> serversList;
+
 
 }

@@ -49,4 +49,14 @@ public class Users {
     private List<Servers> serversList;
 
 
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "userid"),
+            inverseJoinColumns = @JoinColumn(name = "roleid")
+    )
+    private List<Roles> rolesList;
+
+
+
 }

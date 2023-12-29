@@ -7,6 +7,5 @@ import lombok.Data;
 public class HospitalDto {
     private Integer hospitalid;
     private String hospitalname;
-    private Locations cityid;
-
+    private Locations cityid; // Change the type to Locations
 }

@@ -25,12 +25,8 @@ public class HospitalServiceImpl implements HospitalService {
     public HospitalDto createHospital(HospitalDto hospitalDto) {
         Hospitals hospital = modelMapper.map(hospitalDto, Hospitals.class);
 
+        // No need to set hospitalname and cityid explicitly, as modelMapper.map should handle it
 
-        hospital.setHospitalname(hospitalDto.getHospitalname());
-        // cityid değerini set etme
-        if (hospitalDto.getCityid() != null) {
-            hospital.setCityid(hospitalDto.getCityid());
-        }
         hospitalsRepository.save(hospital);
         hospitalDto.setHospitalid(hospital.getHospitalid());
 
