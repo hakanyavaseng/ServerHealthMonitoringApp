@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.util.List;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,11 +14,11 @@ import java.util.List;
 @EqualsAndHashCode(of = {"serverid"})
 @ToString
 @Entity
-@Table(name = "Servers")  // Specify the table name if it's different from the entity name
 public class Servers {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Use IDENTITY strategy for MSSQL
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "servers_seq")
+    @SequenceGenerator(name = "servers_seq", sequenceName = "servers_seq", allocationSize = 1)
     private Integer serverid;
 
     @Column(name = "servername", length = 50, nullable = false, unique = true)
@@ -31,8 +32,18 @@ public class Servers {
     private String serverStorageType;
     private String serverStorageCapacity;
 
-    // TODO JSON IGNORE YAPILDI, HATA VEREBİLİR İLERİDE
 
+    //TODO JSON IGNOORE YAPILDI, HATA VEREBİLİR İLERİDE
+
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "dataid")
+    private List<Healthdata> healthdataList;
+
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "interruptid")
+    private List<Interrupts> interruptsList;
 
     @ManyToOne
     @JoinColumn(name = "hostpitalid")
@@ -41,4 +52,6 @@ public class Servers {
     @JsonIgnore
     @ManyToMany(mappedBy = "serversList")
     private List<Users> usersList;
+
+
 }

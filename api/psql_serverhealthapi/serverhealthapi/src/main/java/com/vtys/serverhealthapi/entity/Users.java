@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -12,11 +13,11 @@ import java.util.List;
 @EqualsAndHashCode(of = {"userid"})
 @ToString
 @Entity
-@Table(name = "Users")  // Specify the table name if it's different from the entity name
 public class Users {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Use IDENTITY strategy for MSSQL
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
+    @SequenceGenerator(name = "users_seq", sequenceName = "users_seq", allocationSize = 1)
     private Integer userid;
 
     @Column(name = "username", length = 20, nullable = false, unique = true)
@@ -37,13 +38,16 @@ public class Users {
     @Column(name = "userlastlogin", length = 30, nullable = false)
     private String userlastlogin;
 
+
     @ManyToMany
     @JoinTable(
             name = "users_servers",
             joinColumns = @JoinColumn(name = "userid"),
             inverseJoinColumns = @JoinColumn(name = "serverid")
+
     )
     private List<Servers> serversList;
+
 
     @ManyToMany
     @JoinTable(
@@ -52,4 +56,7 @@ public class Users {
             inverseJoinColumns = @JoinColumn(name = "roleid")
     )
     private List<Roles> rolesList;
+
+
+
 }

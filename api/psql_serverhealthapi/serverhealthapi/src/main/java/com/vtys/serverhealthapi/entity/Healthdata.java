@@ -7,14 +7,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Healthdata")  // Specify the table name if it's different from the entity name
 public class Healthdata {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Use IDENTITY strategy for MSSQL
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "healthdata_seq")
+    @SequenceGenerator(name = "healthdata_seq", sequenceName = "healthdata_seq", allocationSize = 1)
     private Integer dataid;
 
-    @Column(name = "datadatetime", length = 30, nullable = false)
+    @Column(name = "datadatetime", length = 30, nullable = false, unique = true)
     private String datadatetime;
 
     @Column(name = "datacpuusage")
@@ -41,4 +41,6 @@ public class Healthdata {
     @ManyToOne
     @JoinColumn(name = "serverid")
     private Servers serverid;
+
+
 }

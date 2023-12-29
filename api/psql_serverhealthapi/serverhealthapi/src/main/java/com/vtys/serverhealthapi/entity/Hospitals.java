@@ -1,17 +1,20 @@
 package com.vtys.serverhealthapi.entity;
 
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
-@Table(name = "Hospitals")  // Specify the table name if it's different from the entity name
 public class Hospitals {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Use IDENTITY strategy for MSSQL
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hospitals_seq")
+    @SequenceGenerator(name = "hospitals_seq", sequenceName = "hospitals_seq", allocationSize = 1)
     @Column(name = "hospitalid")
     private Integer hospitalid;
 
@@ -21,4 +24,7 @@ public class Hospitals {
     @ManyToOne
     @JoinColumn(name = "cityid")
     private Locations cityid;
+
+
+
 }

@@ -2,8 +2,10 @@ package com.vtys.serverhealthapi.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.List;
+
+import java.awt.*;
+import java.util.ListIterator;
 
 @Getter
 @Setter
@@ -12,11 +14,11 @@ import java.util.List;
 @EqualsAndHashCode(of = {"roleid"})
 @ToString
 @Entity
-@Table(name = "Roles")  // Specify the table name if it's different from the entity name
 public class Roles {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Use IDENTITY strategy for MSSQL
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "roles_seq")
+    @SequenceGenerator(name = "roles_seq", sequenceName = "roles_seq", allocationSize = 1)
     private Integer roleid;
 
     private String rolename;
@@ -28,4 +30,5 @@ public class Roles {
             inverseJoinColumns = @JoinColumn(name = "userid")
     )
     private List<Users> users;
+
 }

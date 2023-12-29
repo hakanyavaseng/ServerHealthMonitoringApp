@@ -7,11 +7,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Interrupts")  // Specify the table name if it's different from the entity name
 public class Interrupts {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Use IDENTITY strategy for MSSQL
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "interrupts_seq")
+    @SequenceGenerator(name = "interrupts_seq", sequenceName = "interrupts_seq", allocationSize = 1)
     private Integer interruptid;
 
     @Column(name = "interruptdate", length = 30, nullable = false, unique = true)
@@ -26,4 +26,6 @@ public class Interrupts {
     @ManyToOne
     @JoinColumn(name = "serverid")
     private Servers serverid;
+
+
 }
