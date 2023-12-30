@@ -8,6 +8,7 @@ public interface ServersService {
     List<Servers> getAllServers();
    List<Servers> findByServernameContainingIgnoreCase(String servername);
    ServerDto createServer(ServerDto serverDto);
+   List<Servers> findByCitynameNativeQuery(String cityName);
 
 
 

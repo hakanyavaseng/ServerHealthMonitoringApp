@@ -1,16 +1,13 @@
 package com.vtys.serverhealthapi.service.impl;
 
 import com.vtys.serverhealthapi.dto.LocationDto;
-import com.vtys.serverhealthapi.dto.UserDto;
 import com.vtys.serverhealthapi.entity.Locations;
-import com.vtys.serverhealthapi.entity.Users;
 import com.vtys.serverhealthapi.repo.LocationsRepository;
 import com.vtys.serverhealthapi.service.LocationService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

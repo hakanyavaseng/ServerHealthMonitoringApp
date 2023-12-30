@@ -1,13 +1,10 @@
 package com.vtys.serverhealthapi.controller;
 
 import com.vtys.serverhealthapi.dto.HospitalDto;
-import com.vtys.serverhealthapi.dto.LocationDto;
 import com.vtys.serverhealthapi.entity.Hospitals;
 import com.vtys.serverhealthapi.repo.HospitalsRepository;
 import com.vtys.serverhealthapi.service.HospitalService;
-import com.vtys.serverhealthapi.service.LocationService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

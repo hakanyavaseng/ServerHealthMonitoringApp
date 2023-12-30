@@ -1,6 +1,5 @@
 package com.vtys.serverhealthapi.service.impl;
 
-import com.vtys.serverhealthapi.dto.HospitalDto;
 import com.vtys.serverhealthapi.dto.ServerDto;
 import com.vtys.serverhealthapi.entity.Hospitals;
 import com.vtys.serverhealthapi.entity.Servers;
@@ -63,6 +62,10 @@ public class ServersServiceImpl implements ServersService {
         serverDto.setServerid(server.getServerid());
 
         return serverDto;
+    }
+    @Override
+    public List<Servers> findByCitynameNativeQuery(String cityName) {
+       return serversRepository.findByCitynameNativeQuery(cityName);
     }
 
 

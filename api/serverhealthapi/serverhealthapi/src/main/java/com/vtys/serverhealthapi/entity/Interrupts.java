@@ -14,10 +14,10 @@ public class Interrupts {
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // Use IDENTITY strategy for MSSQL
     private Integer interruptid;
 
-    @Column(name = "interruptdate", length = 30, nullable = false, unique = true)
+    @Column(name = "interruptdate", length = 30, nullable = false)
     private String interruptdate;
 
-    @Column(name = "interrupttime", length = 20, nullable = false, unique = true)
+    @Column(name = "interrupttime", length = 20, nullable = false)
     private String interrupttime;
 
     @Column(name = "interruptstatus")

@@ -1,5 +1,5 @@
 package com.vtys.serverhealthapi.controller;
-import com.vtys.serverhealthapi.dto.HospitalDto;
+
 import com.vtys.serverhealthapi.dto.ServerDto;
 import com.vtys.serverhealthapi.entity.Servers;
 import com.vtys.serverhealthapi.service.ServersService;
@@ -32,6 +32,11 @@ public class ServersController {
     @PostMapping("/create")
     public ResponseEntity<ServerDto> createHospital(@RequestBody ServerDto serverDto) {
         return ResponseEntity.ok(serversService.createServer(serverDto));
+    }
+
+    @GetMapping("/getbycityname/{cityname}")
+    public List<Servers> getByCityName(@RequestParam String cityName) {
+        return serversService.findByCitynameNativeQuery(cityName);
     }
 
 }

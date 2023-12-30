@@ -1,6 +1,5 @@
 package com.vtys.serverhealthapi.dto;
 
-import com.vtys.serverhealthapi.entity.Hospitals;
 import lombok.Data;
 
 @Data
