@@ -5,6 +5,7 @@ import com.vtys.serverhealthapi.entity.Hospitals;
 import com.vtys.serverhealthapi.entity.Servers;
 import com.vtys.serverhealthapi.repo.HospitalsRepository;
 import com.vtys.serverhealthapi.repo.ServersRepository;
+import com.vtys.serverhealthapi.service.EmailSenderService;
 import com.vtys.serverhealthapi.service.ServersService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -19,8 +20,10 @@ public class ServersServiceImpl implements ServersService {
 
     private final ServersRepository serversRepository;
     private  final HospitalsRepository hospitalsRepository;
-
     private final ModelMapper modelMapper;
+
+    private final EmailSenderService emailSenderService; // Inject EmailSenderService here
+
 
     @Override
     public List<Servers> getAllServers() {
@@ -65,6 +68,8 @@ public class ServersServiceImpl implements ServersService {
     }
     @Override
     public List<Servers> findByCitynameNativeQuery(String cityName) {
+        
+       // emailSenderService.sendEmail("hakanyavaseng@gmail.com", "Sehire gore server aramasi yapildi!", "API Islem Bilgisi");
        return serversRepository.findByCitynameNativeQuery(cityName);
     }
 

@@ -3,7 +3,7 @@ package com.vtys.serverhealthapi.service.impl;
 import com.vtys.serverhealthapi.dto.HospitalDto;
 import com.vtys.serverhealthapi.entity.Hospitals;
 import com.vtys.serverhealthapi.repo.HospitalsRepository;
-import com.vtys.serverhealthapi.repo.LocationsRepository;
+//import com.vtys.serverhealthapi.repo.LocationsRepository;
 import com.vtys.serverhealthapi.service.HospitalService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -17,7 +17,7 @@ import java.util.List;
 public class HospitalServiceImpl implements HospitalService {
     private final ModelMapper modelMapper;
     private final HospitalsRepository hospitalsRepository;
-    private final LocationsRepository locationsRepository;
+    //private final LocationsRepository locationsRepository;
 
 
     //Create a hospital and save it to the database
