@@ -16,6 +16,7 @@ public class InterruptsServiceImpl implements InterruptsService {
 
     private final InterruptsRepository interruptsRepository;
 
+
     @Override
     public List<Interrupts> getAllInterrupts() {
        return interruptsRepository.findAll();
@@ -29,10 +30,9 @@ public class InterruptsServiceImpl implements InterruptsService {
 
     @Override
     public List<Interrupts> getInterruptsByServerid(Integer serverid) {
-     return interruptsRepository.getInterruptsByServerid(serverid);
+    return interruptsRepository.getInterruptsByServerid(serverid);
       
-
-}
+    }
 
     @Override
     public List<Interrupts> getInterruptsByHospitalname(String hospitalname) {
