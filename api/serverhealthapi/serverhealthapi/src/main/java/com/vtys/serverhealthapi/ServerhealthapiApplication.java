@@ -1,4 +1,4 @@
-package com.vtys.serverhealthapi;
+	package com.vtys.serverhealthapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
