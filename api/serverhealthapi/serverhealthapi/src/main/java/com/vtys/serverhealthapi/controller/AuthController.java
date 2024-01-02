@@ -60,7 +60,7 @@ public class AuthController {
         user.setUsername(registerDto.getUsername());
         user.setUserpassword(passwordEncoder.encode(registerDto.getPassword()));
         user.setUseremail(registerDto.getUseremail());;
-        user.setUserlastlogin(timestamp.toString());
+        //user.setUserlastlogin(timestamp.toString());
         user.setUserregistrationdate(Date.valueOf(LocalDate.now()).toString());
         Roles roles = rolesRepository.findByRolename("USER").get();
         user.setRolesList(Collections.singletonList(roles));
@@ -73,9 +73,17 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginDto loginDto){
 
+        Users user = userRepository.findByUsername(loginDto.getUsername()).get();
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        Timestamp timestamp = Timestamp.valueOf(currentDateTime);
+
+       
+
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
+     user.setUserlastlogin(timestamp.toString());
+       userRepository.save(user);
 
         return new ResponseEntity<>("User logged in successfully", org.springframework.http.HttpStatus.OK);
         
