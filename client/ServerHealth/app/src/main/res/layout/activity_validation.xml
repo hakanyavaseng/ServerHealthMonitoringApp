@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:backgroundTint="@color/bg_color"
+    tools:context=".ValidationActivity"
+    tools:layout_editor_absoluteX="4dp"
+    tools:layout_editor_absoluteY="0dp">
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/val_input_index0"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="@color/textSecondaryColor"
+        android:textColorHint="@color/textSecondaryColor"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/val_input_index1"
+        app:layout_constraintEnd_toStartOf="@+id/val_input_index1"
+        app:layout_constraintStart_toStartOf="@+id/btn_register"
+        app:layout_constraintTop_toTopOf="@+id/val_input_index1"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlHardcoded" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/val_input_index3"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="@color/textSecondaryColor"
+        android:textColorHint="@color/textSecondaryColor"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_register"
+        app:layout_constraintStart_toEndOf="@+id/val_input_index2"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="RtlHardcoded" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/val_input_index1"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="@color/textSecondaryColor"
+        android:textColorHint="@color/textSecondaryColor"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/val_input_index2"
+        app:layout_constraintEnd_toStartOf="@+id/val_input_index2"
+        app:layout_constraintStart_toEndOf="@+id/val_input_index0"
+        app:layout_constraintTop_toTopOf="@+id/val_input_index2"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlHardcoded" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/val_input_index2"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="@color/textSecondaryColor"
+        android:textColorHint="@color/textSecondaryColor"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/val_input_index3"
+        app:layout_constraintEnd_toStartOf="@+id/val_input_index3"
+        app:layout_constraintStart_toEndOf="@+id/val_input_index1"
+        app:layout_constraintTop_toTopOf="@+id/val_input_index3"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/validation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/verification"
+        android:textAlignment="center"
+        android:textColor="@color/textPrimaryColor"
+
+        android:textSize="38sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/brandPrimaryColor"
+        android:text="@string/verify_button"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/brandPrimaryColor"
+        android:textColorLink="@color/brandPrimaryColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.387"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/val_input_index3"
+        app:layout_constraintVertical_bias="0.176" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+
+        android:layout_width="203dp"
+        android:layout_height="203dp"
+        android:contentDescription="TODO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="233dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/verify_code"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/validation" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
