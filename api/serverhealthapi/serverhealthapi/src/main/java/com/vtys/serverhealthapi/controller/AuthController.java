@@ -5,8 +5,12 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,10 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vtys.serverhealthapi.dto.LoginDto;
 import com.vtys.serverhealthapi.dto.RegisterDto;
+import com.vtys.serverhealthapi.dto.VerifyDto;
 import com.vtys.serverhealthapi.entity.Roles;
+import com.vtys.serverhealthapi.entity.UserVerificationCode;
 import com.vtys.serverhealthapi.entity.Users;
 import com.vtys.serverhealthapi.repo.RolesRepository;
 import com.vtys.serverhealthapi.repo.UserRepository;
+import com.vtys.serverhealthapi.repo.UserVerificationCodeRepository;
+import com.vtys.serverhealthapi.service.EmailSenderService;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -31,17 +39,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class AuthController {
 
     private AuthenticationManager authenticationManager;
+    private UserVerificationCodeRepository userVerificationCodeRepository;
     private UserRepository userRepository;
     private RolesRepository rolesRepository;
     private PasswordEncoder passwordEncoder;
+    private CacheManager cacheManager;
+    private EmailSenderService emailSenderService;
 
     @Autowired
     public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository,
-            RolesRepository rolesRepository, PasswordEncoder passwordEncoder) {
+            RolesRepository rolesRepository, PasswordEncoder passwordEncoder,EmailSenderService emailSenderService, UserVerificationCodeRepository userVerificationCodeRepository) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.rolesRepository = rolesRepository;
         this.passwordEncoder = passwordEncoder;
+        this.emailSenderService = emailSenderService;
+        this.userVerificationCodeRepository = userVerificationCodeRepository;
+
     }
 
     @PostMapping("/register")
@@ -60,13 +74,29 @@ public class AuthController {
         user.setUsername(registerDto.getUsername());
         user.setUserpassword(passwordEncoder.encode(registerDto.getPassword()));
         user.setUseremail(registerDto.getUseremail());;
-        //user.setUserlastlogin(timestamp.toString());
+        user.setUserlastlogin(timestamp.toString());
         user.setUserregistrationdate(Date.valueOf(LocalDate.now()).toString());
+        user.setUserauthority("0");
         Roles roles = rolesRepository.findByRolename("USER").get();
         user.setRolesList(Collections.singletonList(roles));
 
-        userRepository.save(user);
-        return new ResponseEntity<>("User registered successfully", org.springframework.http.HttpStatus.OK);
+        String verificationCodeString = generateVerificationCode();
+         emailSenderService.sendVerificationEmail(registerDto.getUseremail(), verificationCodeString);
+
+
+                 userRepository.save(user);
+
+
+        UserVerificationCode userVerificationCode = new UserVerificationCode();
+        userVerificationCode.setUserid(user);
+        userVerificationCode.setUsername(user.getUsername());
+        userVerificationCode.setVerificationCode(verificationCodeString);
+
+        userVerificationCodeRepository.save(userVerificationCode);
+
+    
+
+        return new ResponseEntity<>("User registered successfully, please verificate user.", org.springframework.http.HttpStatus.OK);
 
     }
 
@@ -91,6 +121,38 @@ public class AuthController {
 
     }
 
+   @PostMapping("/verify")
+   public ResponseEntity<String> verify(@RequestBody VerifyDto verifyDto){
+
+    Optional<UserVerificationCode> userVerificationCode = userVerificationCodeRepository.findByUsername(verifyDto.getUsername());
+
+    if(userVerificationCode.isPresent()){
+        if(userVerificationCode.get().getVerificationCode().equals(verifyDto.getVerificationCode()))
+        {
+            Users user = userRepository.findByUsername(verifyDto.getUsername()).get();
+            user.setUserauthority("1");
+            userRepository.save(user);
+            return new ResponseEntity<>("User verified successfully", org.springframework.http.HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>("Verification code is wrong", org.springframework.http.HttpStatus.BAD_REQUEST);
+        }
+    }
+    else{
+        return new ResponseEntity<>("User not found", org.springframework.http.HttpStatus.BAD_REQUEST);
+    }
+
+
+
+
+   }
+
+
+    public static String generateVerificationCode() {
+        Random random = new Random();
+        int verificationCode = 1000 + random.nextInt(9000); // 1000-9999 range
+        return String.valueOf(verificationCode);
+    }
 
     
 }
