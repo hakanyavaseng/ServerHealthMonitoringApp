@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/home"
+        android:iconTint="@color/brandSecondaryColor"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/navigation_favourite"
+        android:title="@string/favourite"
+        android:icon="@drawable/heart"
+        android:iconTint="@color/brandPrimaryColor"/>
+    <!-- Diğer öğeleri ekleyin -->
+    <item
+        android:id="@+id/navigation_refresh"
+        android:title="@string/refresh"
+        android:icon="@drawable/refresh_cw" />
+    <!-- Diğer öğeleri ekleyin -->
+    <item
+        android:id="@+id/navigation_notification"
+        android:title="@string/notifications"
+        android:icon="@drawable/bell" />
+    <!-- Diğer öğeleri ekleyin -->
+    <item
+        android:id="@+id/navigation_profile"
+        android:title="@string/profile"
+        android:icon="@drawable/profile" />
+    <!-- Diğer öğeleri ekleyin -->
+</menu>

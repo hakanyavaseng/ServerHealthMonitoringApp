@@ -16,8 +16,19 @@ class RegisterActivity : AppCompatActivity() {
             val intent= Intent(this,LoginActivity::class.java)
             startActivity(intent)
             finish() }
-        val btn_register=findViewById<Button>(R.id.btn_register)
+
+        val btn_register=findViewById<Button>(R.id.btn_registration_page)
         btn_register.setOnClickListener {
+
+            //TODO Kayıt olma işlemleri
+
+
+
+
+
+
+
+            //Sayfa degistirme
             val intent= Intent(this,ValidationActivity::class.java)
             startActivity(intent)
             finish()
