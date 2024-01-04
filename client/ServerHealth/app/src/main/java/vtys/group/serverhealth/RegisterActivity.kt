@@ -36,7 +36,7 @@ class RegisterActivity : AppCompatActivity() {
 
             //TODO Kayıt olma işlemleri
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080") // Remove extra trailing slash
+                .baseUrl("https://serverhealth.azurewebsites.net") // Remove extra trailing slash
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 

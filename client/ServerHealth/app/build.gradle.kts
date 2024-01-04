@@ -68,4 +68,8 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.8")
 
 
+    // Volley
+    implementation("com.android.volley:volley:1.2.1")
+
+
 }

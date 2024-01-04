@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
             )
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080")
+                .baseUrl("https://serverhealth.azurewebsites.net")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
