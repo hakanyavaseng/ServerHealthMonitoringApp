@@ -12,7 +12,7 @@ import com.vtys.serverhealthapi.entity.Interrupts;
 import com.vtys.serverhealthapi.service.InterruptsService;
 
 @RestController
-@RequestMapping("/interrupts")
+@RequestMapping("/api/interrupts")
 public class InterruptsController {
 
 
@@ -34,7 +34,7 @@ public class InterruptsController {
         return interruptsService.getInterruptsByServerid(serverid);
     }
 
-    @GetMapping("/getbyservername")
+    /* @GetMapping("/getbyservername")
     public List<Interrupts> findByServerNameNativeQuery(@RequestParam String servername) {
         return interruptsService.findByServerNameNativeQuery(servername);
     }
@@ -43,6 +43,8 @@ public class InterruptsController {
     public List<Interrupts> getInterruptsByHospitalname(@RequestParam String hospitalname) {
         return interruptsService.getInterruptsByHospitalname(hospitalname);
     }
+    */
+    
 
 
     

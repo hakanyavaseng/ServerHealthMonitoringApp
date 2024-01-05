@@ -24,19 +24,24 @@ public class ServersController {
         return serversService.getAllServers();
     }
 
-    @GetMapping("/getbyservercontaining/{servername}")
-    public List<Servers> getByServerName(@RequestParam String servername) {
-        return serversService.findByServernameContainingIgnoreCase(servername);
-    }
-
+ 
     @PostMapping("/create")
     public ResponseEntity<ServerDto> createHospital(@RequestBody ServerDto serverDto) {
         return ResponseEntity.ok(serversService.createServer(serverDto));
     }
 
+    /* 
     @GetMapping("/getbycityname/{cityname}")
     public List<Servers> getByCityName(@RequestParam String cityName) {
         return serversService.findByCitynameNativeQuery(cityName);
     }
+
+    @GetMapping("/getbyservercontaining/{servername}")
+    public List<Servers> getByServerName(@RequestParam String servername) {
+        return serversService.findByServernameContainingIgnoreCase(servername);
+    }
+    */
+ 
+
 
 }

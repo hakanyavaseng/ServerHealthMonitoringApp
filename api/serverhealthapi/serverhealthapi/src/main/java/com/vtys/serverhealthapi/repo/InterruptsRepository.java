@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface InterruptsRepository extends JpaRepository<Interrupts, Integer> {
 
-    @Query(value = "EXEC GetInterruptsByServerId :serverid", nativeQuery = true)
+    @Query(value = "EXEC sp_GetInterruptsByServerId :serverid", nativeQuery = true)
     List<Interrupts> getInterruptsByServerid(Integer serverid);
 
     @Query(value = "EXEC GetInterruptsByServerName :servername", nativeQuery = true)
