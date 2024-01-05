@@ -71,6 +71,8 @@ class Home : Fragment(), ServerAdapter.OnItemClickListener {
         args.putInt("serverRam", server.serverRam)
         args.putInt("serverStorageType", server.serverStorageType)
         args.putInt("serverStorageCapacity", server.serverStorageCapacity)
+        args.putString("hospitalName", server.hospitalId.hospitalName)
+        args.putString("cityName", server.hospitalId.cityId.cityName)
 
         serverDetailFragment.arguments = args
 
