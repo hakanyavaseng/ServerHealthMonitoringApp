@@ -14,9 +14,10 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import org.json.JSONObject
 import vtys.group.serverhealth.R
+import vtys.group.serverhealth.ServerDetailFragment
 import vtys.group.serverhealth.data.ServerAdapter
 
-class Home : Fragment() {
+class Home : Fragment(), ServerAdapter.OnItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ServerAdapter
@@ -30,7 +31,7 @@ class Home : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         recyclerView = view.findViewById(R.id.recyclerView)
-        adapter = ServerAdapter(emptyList())
+        adapter = ServerAdapter(emptyList(),this)
 
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
@@ -52,6 +53,36 @@ class Home : Fragment() {
 
         return view
     }
+
+    override fun onItemClick(server: ServerDataModel) {
+        // Handle item click here
+        openServerDetailFragment(server)
+    }
+
+    private fun openServerDetailFragment(server: ServerDataModel) {
+        val serverDetailFragment = ServerDetailFragment()
+
+        // Pass data to ServerDetailFragment using arguments
+        val args = Bundle()
+        args.putInt("serverId", server.serverId)
+        args.putString("serverName", server.serverName)
+        args.putString("serverIp", server.serverIp)
+        args.putString("serverOs", server.serverOs)
+        args.putInt("serverRam", server.serverRam)
+        args.putInt("serverStorageType", server.serverStorageType)
+        args.putInt("serverStorageCapacity", server.serverStorageCapacity)
+
+        serverDetailFragment.arguments = args
+
+        // Replace current fragment with ServerDetailFragment
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.frame_layout, serverDetailFragment)
+            .addToBackStack(null) // Optional: Adds the transaction to the back stack
+            .commit()
+    }
+
+
+
 
     private fun fetchDataFromApi() {
         val reqQueue: RequestQueue = Volley.newRequestQueue(requireContext())  // Assuming you are inside a Fragment, use requireContext() instead of this

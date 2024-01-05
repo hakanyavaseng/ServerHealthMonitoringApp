@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vtys.group.serverhealth.R
 
-class ServerAdapter(private var serverList: List<ServerDataModel>) :
+class ServerAdapter(private var serverList: List<ServerDataModel>, private val itemClickListener: OnItemClickListener) :
     RecyclerView.Adapter<ServerAdapter.ServerViewHolder>() {
     private var originalServerList: List<ServerDataModel> = serverList
+
 
     class ServerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val serverNameTextView: TextView = itemView.findViewById(R.id.serverNameTextView)
@@ -32,6 +33,10 @@ class ServerAdapter(private var serverList: List<ServerDataModel>) :
         holder.serverIpTextView.text = server.serverIp
         holder.hospitalNameTextView.text = server.hospitalId.hospitalName
         holder.cityTextView.text = server.hospitalId.cityId.cityName
+
+        holder.itemView.setOnClickListener {
+            itemClickListener.onItemClick(server)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -58,5 +63,9 @@ class ServerAdapter(private var serverList: List<ServerDataModel>) :
             }
         }
         notifyDataSetChanged()
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(server: ServerDataModel)
     }
 }
