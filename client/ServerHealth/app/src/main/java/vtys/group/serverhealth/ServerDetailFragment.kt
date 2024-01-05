@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 class ServerDetailFragment : Fragment() {
@@ -42,17 +45,22 @@ class ServerDetailFragment : Fragment() {
 
 
 
-        serverNameTextView.text = "Name: $serverName"
+        serverNameTextView.text = "$serverName"
         serverIpTextView.text = "IP: $serverIp"
         serverOsTextView.text = "OS: $serverOs"
         serverRamTextView.text = "RAM: $serverRam"
         serverStorageTypeTextView.text = "Storage Type: $serverStorageType"
         serverStorageCapacityTextView.text = "Storage Capacity: $serverStorageCapacity"
-        hospitalNameTextView.text = "Hospital Name: $hospitalName"
-        cityNameTextView.text = "City Name: $cityName"
+        hospitalNameTextView.text = "$hospitalName"
+        cityNameTextView.text = "$cityName"
 
 
 
         return view
+
     }
 }
+
+
+
+

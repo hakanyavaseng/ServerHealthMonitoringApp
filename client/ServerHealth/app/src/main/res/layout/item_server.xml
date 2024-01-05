@@ -21,7 +21,6 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
-
         <!-- Server IP TextView -->
         <TextView
             android:id="@+id/serverIpTextView"
@@ -65,12 +64,12 @@
         <!-- ImageView -->
         <ImageView
             android:id="@+id/imView1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/heart"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"
+            android:src="@drawable/heart" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
