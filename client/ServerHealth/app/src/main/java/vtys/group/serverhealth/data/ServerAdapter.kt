@@ -10,6 +10,7 @@ import vtys.group.serverhealth.R
 
 class ServerAdapter(private var serverList: List<ServerDataModel>) :
     RecyclerView.Adapter<ServerAdapter.ServerViewHolder>() {
+    private var originalServerList: List<ServerDataModel> = serverList
 
     class ServerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val serverNameTextView: TextView = itemView.findViewById(R.id.serverNameTextView)
@@ -39,6 +40,23 @@ class ServerAdapter(private var serverList: List<ServerDataModel>) :
 
     fun setData(newServerList: List<ServerDataModel>) {
         serverList = newServerList
+        originalServerList = newServerList
+        notifyDataSetChanged()
+    }
+
+    fun filter(query: String) {
+        serverList = if (query.isEmpty()) {
+            // If the query is empty, restore the original data set
+            originalServerList
+        } else {
+            // Filter the data based on the query
+            originalServerList.filter { server ->
+                server.serverName.contains(query, ignoreCase = true) ||
+                        server.serverIp.contains(query, ignoreCase = true) ||
+                        server.hospitalId.hospitalName.contains(query, ignoreCase = true) ||
+                        server.hospitalId.cityId.cityName.contains(query, ignoreCase = true)
+            }
+        }
         notifyDataSetChanged()
     }
 }
