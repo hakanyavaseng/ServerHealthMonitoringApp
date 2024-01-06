@@ -20,7 +20,7 @@ public class Servers {
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // Use IDENTITY strategy for MSSQL
     private Integer serverid;
 
-    @Column(name = "servername", length = 50, nullable = false, unique = true)
+    @Column(name = "servername", length = 50, nullable = false)
     private String servername;
 
     @Column(name = "serverip", length = 30, nullable = false, unique = true)

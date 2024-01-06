@@ -15,7 +15,7 @@ public class Hospitals {
     @Column(name = "hospitalid")
     private Integer hospitalid;
 
-    @Column(name = "hospitalname", length = 50, nullable = false, unique = true)
+    @Column(name = "hospitalname", length = 50, nullable = false)
     private String hospitalname;
 
     @ManyToOne

@@ -39,4 +39,19 @@ public class InterruptsServiceImpl implements InterruptsService {
         return interruptsRepository.getInterruptsByHospitalname(hospitalname);
     }
 
+    @Override
+    public List<Interrupts> getInterruptsInOneWeek(Integer serverid) {
+        return interruptsRepository.getInterruptsInOneWeek(serverid);
+    }
+
+    @Override
+    public List<Interrupts> getInterruptsInOneMonth(Integer serverid) {
+        return interruptsRepository.getInterruptsInOneMonth(serverid);
+    }
+
+    @Override
+    public List<Interrupts> getInterruptsInOneYear(Integer serverid) {
+        return interruptsRepository.getInterruptsInOneYear(serverid);
+    }
+
 }

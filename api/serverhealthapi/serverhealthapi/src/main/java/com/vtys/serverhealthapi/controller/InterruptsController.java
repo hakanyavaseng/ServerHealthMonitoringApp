@@ -34,6 +34,21 @@ public class InterruptsController {
         return interruptsService.getInterruptsByServerid(serverid);
     }
 
+    @GetMapping("/getoneweek/{serverid}")
+    public List<Interrupts> getInterruptsInOneWeek(@PathVariable Integer serverid) {
+        return interruptsService.getInterruptsInOneWeek(serverid);
+    }
+
+    @GetMapping("/getonemonth/{serverid}")
+    public List<Interrupts> getInterruptsInOneMonth(@PathVariable Integer serverid) {
+        return interruptsService.getInterruptsInOneMonth(serverid);
+    }
+
+    @GetMapping("/getoneyear/{serverid}")
+    public List<Interrupts> getInterruptsInOneYear(@PathVariable Integer serverid) {
+        return interruptsService.getInterruptsInOneYear(serverid);
+    }
+
     /* @GetMapping("/getbyservername")
     public List<Interrupts> findByServerNameNativeQuery(@RequestParam String servername) {
         return interruptsService.findByServerNameNativeQuery(servername);

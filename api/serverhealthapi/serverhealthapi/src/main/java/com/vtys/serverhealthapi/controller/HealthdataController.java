@@ -24,5 +24,20 @@ public class HealthdataController {
     public List<Healthdata> getHealthdataByServerid(@PathVariable Integer serverid) {
         return healthdataService.findByServerid(serverid);
     }
+
+    @GetMapping("getoneweek/{serverid}")
+    public List<Healthdata> getHealthdataInOneWeek(@PathVariable Integer serverid) {
+        return healthdataService.getHealthdataInOneWeek(serverid);
+    }
+
+    @GetMapping("getonemonth/{serverid}")
+    public List<Healthdata> getHealthdataInOneMonth(@PathVariable Integer serverid) {
+        return healthdataService.getHealthdataInOneMonth(serverid);
+    }
+
+    @GetMapping("getoneyear/{serverid}")
+    public List<Healthdata> getHealthdataInOneYear(@PathVariable Integer serverid) {
+        return healthdataService.getHealthdataInOneYear(serverid);
+    }
     
 }
