@@ -10,6 +10,15 @@ data class ServerDataModel(
     val hospitalid: HospitalDataModel
 )
 
+data class InterruptDataModel(
+    val interruptid: Int,
+    val interruptdate: String,
+    val interrupttime: String,
+    val interruptstatus: Boolean,
+    val serverid: ServerDataModel
+)
+
+
 data class ServerDataModelWithIntHospitalId(
     val serverid: Int,
     val servername: String,

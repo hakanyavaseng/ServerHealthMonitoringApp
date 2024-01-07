@@ -22,6 +22,14 @@
     <string name="profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="data_date_time">Data Date Tİme</string>
+    <string name="hearbeat_status">Hearbeat Status</string>
+    <string name="cpu_usage">CPU Usage</string>
+    <string name="temperature_status">Temperature Status</string>
+    <string name="ram_usage">RAM Usage</string>
+    <string name="ambient_temperature_status">Ambient Temperature Status</string>
+    <string name="storage_usage">Storage Usage</string>
+    <string name="energy_usage">Energy Usage</string>
 
 
 </resources>
