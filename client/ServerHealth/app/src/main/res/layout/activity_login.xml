@@ -8,9 +8,22 @@
     tools:context=".LoginActivity">
 
     <TextView
+        android:id="@+id/textViewOr2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Or"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_login"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+    <TextView
         android:id="@+id/user_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
         android:text="@string/user_login"
         android:textAlignment="center"
         android:textColor="@color/textPrimaryColor"
@@ -24,12 +37,9 @@
         android:id="@+id/input_username"
         android:layout_width="328dp"
         android:layout_height="69.89dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/input"
-        app:layout_constraintBottom_toTopOf="@+id/input_password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_register"
         tools:ignore="MissingConstraints">
@@ -68,13 +78,10 @@
         android:id="@+id/input_password"
         android:layout_width="328dp"
         android:layout_height="69.89dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginEnd="42dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/input"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/input_username"
+        app:layout_constraintStart_toStartOf="@+id/input_username"
         app:layout_constraintTop_toBottomOf="@+id/input_username"
         tools:ignore="MissingConstraints">
 
@@ -125,13 +132,13 @@
         android:id="@+id/textView"
         android:layout_width="138dp"
         android:layout_height="28dp"
-        android:layout_marginStart="27dp"
+        android:layout_marginTop="12dp"
         android:clickable="true"
         android:gravity="center"
         android:text="I forgot my password"
         android:textColor="@color/textSecondaryColor"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="@+id/input_password"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/checkBox"
         app:layout_constraintTop_toBottomOf="@+id/input_password" />
 
@@ -139,71 +146,75 @@
         android:id="@+id/checkBox"
         android:layout_width="135dp"
         android:layout_height="28dp"
+        android:layout_marginTop="12dp"
         android:text="Remember me"
         android:textColor="@color/textSecondaryColor"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/input_password"
-        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/input_password"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="60dp"
         android:backgroundTint="@color/brandPrimaryColor"
         android:text="LOGIN"
         android:textColor="@color/white"
         android:textColorHighlight="@color/brandPrimaryColor"
         android:textColorLink="@color/brandPrimaryColor"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/input_password" />
 
     <Button
         android:id="@+id/btn_register"
         android:layout_width="300dp"
 
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/white"
 
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/white"
         android:text="REGISTER"
         android:textColor="@color/brandPrimaryColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="@+id/btn_login"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
         app:rippleColor="@color/brandSecondaryColor"
         app:strokeColor="@color/brandPrimaryColor"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginTop="12dp"
         android:text="Or"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_register"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_register"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@+id/btn_register"
+        app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
     <Button
         android:id="@+id/btnGoogleLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
+
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="GOOGLE LOGIN"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_register" />
+
+        android:layout_marginTop="128dp"
+        android:backgroundTint="@color/brandPrimaryColor"
+        android:text="LOG-IN WITH GOOGLE"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/btn_login"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        app:rippleColor="@color/brandSecondaryColor"
+        app:strokeColor="@color/brandPrimaryColor"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
