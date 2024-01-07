@@ -18,11 +18,11 @@ public class UserController {
         this.userservice = userservice;
     }
 
-    /*  @PostMapping("/create")
+      @PostMapping("/create")
     public ResponseEntity<UserDto> create(@RequestBody UserDto userDto) {
         return ResponseEntity.ok(userservice.createUser(userDto));
     }
-    */
+   
    
 
     @GetMapping("/getall")

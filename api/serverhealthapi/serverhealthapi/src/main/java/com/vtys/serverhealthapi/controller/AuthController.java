@@ -9,8 +9,6 @@ import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.Cache;
-import org.springframework.cache.CacheManager;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,8 +19,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vtys.serverhealthapi.config.ModelMapperConfig;
+import com.vtys.serverhealthapi.dto.GoogleLoginDto;
 import com.vtys.serverhealthapi.dto.LoginDto;
 import com.vtys.serverhealthapi.dto.RegisterDto;
+import com.vtys.serverhealthapi.dto.UserDto;
 import com.vtys.serverhealthapi.dto.VerifyDto;
 import com.vtys.serverhealthapi.entity.Roles;
 import com.vtys.serverhealthapi.entity.UserVerificationCode;
@@ -31,6 +32,7 @@ import com.vtys.serverhealthapi.repo.RolesRepository;
 import com.vtys.serverhealthapi.repo.UserRepository;
 import com.vtys.serverhealthapi.repo.UserVerificationCodeRepository;
 import com.vtys.serverhealthapi.service.EmailSenderService;
+import com.vtys.serverhealthapi.service.UserService;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -43,18 +45,19 @@ public class AuthController {
     private UserRepository userRepository;
     private RolesRepository rolesRepository;
     private PasswordEncoder passwordEncoder;
-    private CacheManager cacheManager;
     private EmailSenderService emailSenderService;
+    private ModelMapperConfig modelMapper;
 
     @Autowired
     public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository,
-            RolesRepository rolesRepository, PasswordEncoder passwordEncoder,EmailSenderService emailSenderService, UserVerificationCodeRepository userVerificationCodeRepository) {
+            RolesRepository rolesRepository, PasswordEncoder passwordEncoder,EmailSenderService emailSenderService, UserVerificationCodeRepository userVerificationCodeRepository,ModelMapperConfig modelMapper) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.rolesRepository = rolesRepository;
         this.passwordEncoder = passwordEncoder;
         this.emailSenderService = emailSenderService;
         this.userVerificationCodeRepository = userVerificationCodeRepository;
+        this.modelMapper = modelMapper;
 
     }
 
@@ -120,6 +123,35 @@ public class AuthController {
        
 
     }
+
+    /* 
+    @PostMapping("/googlelogin")
+    public ResponseEntity<String> googleLogin(@RequestBody GoogleLoginDto googleLoginDto) {
+
+         if(userRepository.existsByUseremail(googleLoginDto.getEmail()))
+         {
+          return null;   
+         }
+         else { 
+            
+        Users user = new Users();
+         String parsedUsername = googleLoginDto.getEmail().split("@")[0];
+    
+        user.setUsername(parsedUsername);
+        user.setUseremail(googleLoginDto.getEmail());
+        user.setUserpassword("nopasswordthisisgooglelogin");
+        user.setUserregistrationdate(LocalDate.now().toString());
+        user.setUserlastlogin(LocalDate.now().toString());
+
+        userRepository.save(user);
+
+         }
+        return new ResponseEntity<>("User added to database by Google.", org.springframework.http.HttpStatus.OK);
+    }
+
+    */
+
+
 
    @PostMapping("/verify")
    public ResponseEntity<String> verify(@RequestBody VerifyDto verifyDto){

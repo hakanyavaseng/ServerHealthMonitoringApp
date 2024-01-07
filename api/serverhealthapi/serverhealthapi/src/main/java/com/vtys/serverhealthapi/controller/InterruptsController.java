@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vtys.serverhealthapi.dto.InterruptsReportDailyDto;
+import com.vtys.serverhealthapi.dto.InterruptsReportMonthlyDto;
 import com.vtys.serverhealthapi.entity.Interrupts;
 import com.vtys.serverhealthapi.service.InterruptsService;
+
+import jakarta.persistence.Query;
 
 @RestController
 @RequestMapping("/api/interrupts")
@@ -47,6 +51,16 @@ public class InterruptsController {
     @GetMapping("/getoneyear/{serverid}")
     public List<Interrupts> getInterruptsInOneYear(@PathVariable Integer serverid) {
         return interruptsService.getInterruptsInOneYear(serverid);
+    }
+
+    @GetMapping("/getmonthlyreport/{serverid}")
+    public List<InterruptsReportMonthlyDto> getInterruptsReportMonthly(@PathVariable Integer serverid) {
+        return interruptsService.getInterruptsReportMonthly(serverid);
+    }
+
+    @GetMapping("/getdailyreport/{serverid}")
+    public List<InterruptsReportDailyDto> getInterruptsReportDaily(@PathVariable Integer serverid) {
+        return interruptsService.getInterruptsReportDaily(serverid);
     }
 
     /* @GetMapping("/getbyservername")

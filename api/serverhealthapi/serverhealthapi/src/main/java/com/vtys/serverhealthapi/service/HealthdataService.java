@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.vtys.serverhealthapi.entity.Healthdata;
 
-import jakarta.persistence.criteria.CriteriaBuilder.In;
 
 public interface HealthdataService {
 
