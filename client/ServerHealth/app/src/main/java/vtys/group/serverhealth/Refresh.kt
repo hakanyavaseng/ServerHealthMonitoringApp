@@ -1,5 +1,3 @@
-package vtys.group.serverhealth
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +12,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import vtys.group.serverhealth.R
 import vtys.group.serverhealth.create.CreateService
 import vtys.group.serverhealth.data.CityAdapter
 import vtys.group.serverhealth.data.HospitalDataModel
@@ -78,22 +77,22 @@ class Refresh : Fragment() {
             var selectedOS = ""
             var selectedStorageType = ""
 
-
-
             val serverName = editTextServerName.text.toString()
             val serverIP = editTextServerIP.text.toString()
             val selectedRadioButtonId = radioGroupServerOS.checkedRadioButtonId
-                if (selectedRadioButtonId != -1) {
-                    val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
-                    selectedOS = selectedRadioButton.text.toString()
-                } else {
-                }
+            if (selectedRadioButtonId != -1) {
+                val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
+                selectedOS = selectedRadioButton.text.toString()
+            } else {
+                // Handle the case when no radio button is selected
+            }
 
             val selectedStorageTypeId = radioGroupServerStorageType.checkedRadioButtonId
-            if (selectedRadioButtonId != -1) {
-                val selectedStorageTypeId = view.findViewById<RadioButton>(selectedRadioButtonId)
-                  selectedStorageType = selectedStorageTypeId.text.toString()
+            if (selectedStorageTypeId != -1) {
+                val selectedStorageTypeRadioButton = view.findViewById<RadioButton>(selectedStorageTypeId)
+                selectedStorageType = selectedStorageTypeRadioButton.text.toString()
             } else {
+                // Handle the case when no storage type radio button is selected
             }
 
             val serverRAM = editTextServerRAM.text.toString()
@@ -102,8 +101,6 @@ class Refresh : Fragment() {
 
             // Create a ServerDataModel object with the selected hospital name and server name
             // Get the selected hospital's ID
-
-
             val serverData = ServerDataModelWithIntHospitalId(
                 0,
                 serverName,
@@ -121,10 +118,12 @@ class Refresh : Fragment() {
                     val response = createService.addServer(serverData).execute()
 
                     withContext(Dispatchers.Main) {
-                        if (response.isSuccessful) {
-                            Toast.makeText(requireContext(), "Server added successfully", Toast.LENGTH_SHORT).show()
-                        } else {
-                            Toast.makeText(requireContext(), "Server could not be added", Toast.LENGTH_SHORT).show()
+                        if (isAdded) {
+                            if (response.isSuccessful) {
+                                Toast.makeText(requireContext(), "Server added successfully", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(requireContext(), "Server could not be added", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                 } catch (e: Exception) {
@@ -139,8 +138,8 @@ class Refresh : Fragment() {
             val selectedCity = citySpinner.selectedItem as CityDataModel
 
             // Create a HospitalDataModel object with the selected city name and hospital name
-            val cityData = CityDataModel(selectedCity.cityid,selectedCity.cityname)
-            val hospitalData = HospitalDataModel( 0,hospitalName, cityData)
+            val cityData = CityDataModel(selectedCity.cityid, selectedCity.cityname)
+            val hospitalData = HospitalDataModel(0, hospitalName, cityData)
 
             // Call the createHospital function from the CreateService interface to make the API request
             CoroutineScope(Dispatchers.IO).launch {
@@ -148,11 +147,12 @@ class Refresh : Fragment() {
                     val response = createService.addHospital(hospitalData).execute()
 
                     withContext(Dispatchers.Main) {
-                        if (response.isSuccessful) {
-                            Toast.makeText(requireContext(), "Hospital added successfully", Toast.LENGTH_SHORT).show()
-
-                        } else {
-                            // Handle unsuccessful response
+                        if (isAdded) {
+                            if (response.isSuccessful) {
+                                Toast.makeText(requireContext(), "Hospital added successfully", Toast.LENGTH_SHORT).show()
+                            } else {
+                                // Handle unsuccessful response
+                            }
                         }
                     }
                 } catch (e: Exception) {
@@ -173,7 +173,6 @@ class Refresh : Fragment() {
         fetchCities()
         fetchHospitals()
 
-
         return view
     }
 
@@ -187,44 +186,44 @@ class Refresh : Fragment() {
         }
     }
 
-    // Add this function inside your Refresh fragment
-    // Add this function inside your Refresh fragment
     private fun fetchHospitals() {
         createService.getHospitals().enqueue(object : retrofit2.Callback<List<HospitalDataModel>> {
             override fun onResponse(
                 call: Call<List<HospitalDataModel>>,
                 response: Response<List<HospitalDataModel>>
             ) {
-                if (response.isSuccessful) {
-                    val hospitals = response.body() ?: emptyList()
+                if (isAdded) {
+                    if (response.isSuccessful) {
+                        val hospitals = response.body() ?: emptyList()
 
-                    val adapter = HospitalAdapter(
-                        requireContext().applicationContext,
-                        android.R.layout.simple_spinner_item,
-                        hospitals
-                    )
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        val adapter = HospitalAdapter(
+                            requireContext().applicationContext,
+                            android.R.layout.simple_spinner_item,
+                            hospitals
+                        )
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-                    val hospitalSpinner = view?.findViewById<Spinner>(R.id.hospitalSpinner)
-                    hospitalSpinner?.adapter = adapter
+                        val hospitalSpinner = view?.findViewById<Spinner>(R.id.hospitalSpinner)
+                        hospitalSpinner?.adapter = adapter
 
-                    hospitalSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parentView: AdapterView<*>?,
-                            selectedItemView: View?,
-                            position: Int,
-                            id: Long
-                        ) {
-                            // Handle the selected Hospital ID if needed
-                            val selectedHospitalId = adapter.getHospitalId(position)
+                        hospitalSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(
+                                parentView: AdapterView<*>?,
+                                selectedItemView: View?,
+                                position: Int,
+                                id: Long
+                            ) {
+                                // Handle the selected Hospital ID if needed
+                                val selectedHospitalId = adapter.getHospitalId(position)
+                            }
+
+                            override fun onNothingSelected(parentView: AdapterView<*>?) {
+                                // Handle when nothing is selected
+                            }
                         }
-
-                        override fun onNothingSelected(parentView: AdapterView<*>?) {
-                            // Handle when nothing is selected
-                        }
+                    } else {
+                        // Handle unsuccessful response
                     }
-                } else {
-                    // Handle unsuccessful response
                 }
             }
 
@@ -241,40 +240,42 @@ class Refresh : Fragment() {
                 call: Call<List<CityDataModel>>,
                 response: Response<List<CityDataModel>>
             ) {
-                if (response.isSuccessful) {
-                    val cities = response.body() ?: emptyList()
+                if (isAdded) {
+                    if (response.isSuccessful) {
+                        val cities = response.body() ?: emptyList()
 
-                    // Order the cities by cityid
-                    val sortedCities = cities.sortedBy { it.cityid }
+                        // Order the cities by cityid
+                        val sortedCities = cities.sortedBy { it.cityid }
 
-                    // Create a CityAdapter and set it to the citySpinner
-                    val cityAdapter = CityAdapter(
-                        requireContext().applicationContext,
-                        android.R.layout.simple_spinner_item,
-                        sortedCities
-                    )
-                    cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        // Create a CityAdapter and set it to the citySpinner
+                        val cityAdapter = CityAdapter(
+                            requireContext().applicationContext,
+                            android.R.layout.simple_spinner_item,
+                            sortedCities
+                        )
+                        cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-                    val citySpinner = view?.findViewById<Spinner>(R.id.citySpinner)
-                    citySpinner?.adapter = cityAdapter
+                        val citySpinner = view?.findViewById<Spinner>(R.id.citySpinner)
+                        citySpinner?.adapter = cityAdapter
 
-                    citySpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parentView: AdapterView<*>?,
-                            selectedItemView: View?,
-                            position: Int,
-                            id: Long
-                        ) {
-                            // Handle the selected city name if needed
-                            val selectedCityName = sortedCities[position].cityname
+                        citySpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(
+                                parentView: AdapterView<*>?,
+                                selectedItemView: View?,
+                                position: Int,
+                                id: Long
+                            ) {
+                                // Handle the selected city name if needed
+                                val selectedCityName = sortedCities[position].cityname
+                            }
+
+                            override fun onNothingSelected(parentView: AdapterView<*>?) {
+                                // Handle when nothing is selected
+                            }
                         }
-
-                        override fun onNothingSelected(parentView: AdapterView<*>?) {
-                            // Handle when nothing is selected
-                        }
+                    } else {
+                        // Handle unsuccessful response
                     }
-                } else {
-                    // Handle unsuccessful response
                 }
             }
 

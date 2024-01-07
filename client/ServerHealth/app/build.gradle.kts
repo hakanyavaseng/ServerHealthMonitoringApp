@@ -73,6 +73,9 @@ dependencies {
 
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
 
+    //Google Login
+    implementation ("com.google.android.gms:play-services-auth:20.7.0")
+
 
 
 }

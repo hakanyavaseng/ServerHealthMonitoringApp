@@ -1,39 +1,55 @@
 package vtys.group.serverhealth
 
 import Home
+import Refresh
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import vtys.group.serverhealth.databinding.ActivityHomeBinding
 
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
+    private lateinit var googleSignInClient: GoogleSignInClient
+
+    private val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        .requestEmail()
+        // Add any other necessary options
+        .build()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val account: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
+
+        // Initialize the GoogleSignInClient
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(Home())
+
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
-
                 R.id.navigation_home -> replaceFragment(Home())
                 R.id.navigation_favourite -> replaceFragment(Favourites())
                 R.id.navigation_refresh -> replaceFragment(Refresh())
                 R.id.navigation_notification -> replaceFragment(Notifications())
                 R.id.navigation_profile -> replaceFragment(Profile())
-
-                else ->{
-
+                else -> {
                 }
+            }
+            true
         }
-        true
-    }
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -41,9 +57,14 @@ class HomeActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
+    }
 
+    // Provide access to the GoogleSignInClient
+    fun getGoogleSignInClient(): GoogleSignInClient {
+        return googleSignInClient
     }
 }
+
 /*val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
       bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
           when (menuItem.itemId) {
