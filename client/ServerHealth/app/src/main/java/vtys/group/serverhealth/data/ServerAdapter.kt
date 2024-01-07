@@ -1,6 +1,5 @@
 package vtys.group.serverhealth.data
 
-import ServerDataModel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,10 +28,10 @@ class ServerAdapter(private var serverList: List<ServerDataModel>, private val i
         val server = serverList[position]
 
         // Bind data to views
-        holder.serverNameTextView.text = server.serverName
-        holder.serverIpTextView.text = server.serverIp
-        holder.hospitalNameTextView.text = server.hospitalId.hospitalName
-        holder.cityTextView.text = server.hospitalId.cityId.cityName
+        holder.serverNameTextView.text = server.servername
+        holder.serverIpTextView.text = server.serverip
+        holder.hospitalNameTextView.text = server.hospitalid.hospitalname
+        holder.cityTextView.text = server.hospitalid.cityid.cityname
 
         holder.itemView.setOnClickListener {
             itemClickListener.onItemClick(server)
@@ -56,10 +55,10 @@ class ServerAdapter(private var serverList: List<ServerDataModel>, private val i
         } else {
             // Filter the data based on the query
             originalServerList.filter { server ->
-                server.serverName.contains(query, ignoreCase = true) ||
-                        server.serverIp.contains(query, ignoreCase = true) ||
-                        server.hospitalId.hospitalName.contains(query, ignoreCase = true) ||
-                        server.hospitalId.cityId.cityName.contains(query, ignoreCase = true)
+                server.servername.contains(query, ignoreCase = true) ||
+                        server.serverip.contains(query, ignoreCase = true) ||
+                        server.hospitalid.hospitalname.contains(query, ignoreCase = true) ||
+                        server.hospitalid.cityid.cityname.contains(query, ignoreCase = true)
             }
         }
         notifyDataSetChanged()

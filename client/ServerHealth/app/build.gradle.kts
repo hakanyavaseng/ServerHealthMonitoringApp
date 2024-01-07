@@ -44,7 +44,7 @@ android {
 
 dependencies {
 
-    implementation("androidx.annotation:annotation:1.6.0")
+    implementation("androidx.annotation:annotation:1.7.1")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     val nav_version = "2.7.6"
@@ -65,13 +65,13 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
     // Gson (for JSON parsing)
-    implementation("com.google.code.gson:gson:2.8.8")
+    implementation("com.google.code.gson:gson:2.10.1")
 
 
     // Volley
     implementation("com.android.volley:volley:1.2.1")
 
-    implementation ("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
 
 
 

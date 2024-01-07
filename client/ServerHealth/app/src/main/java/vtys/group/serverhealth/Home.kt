@@ -15,7 +15,10 @@ import com.google.gson.Gson
 import org.json.JSONObject
 import vtys.group.serverhealth.R
 import vtys.group.serverhealth.ServerDetailFragment
+import vtys.group.serverhealth.data.CityDataModel
+import vtys.group.serverhealth.data.HospitalDataModel
 import vtys.group.serverhealth.data.ServerAdapter
+import vtys.group.serverhealth.data.ServerDataModel
 
 class Home : Fragment(), ServerAdapter.OnItemClickListener {
 
@@ -64,15 +67,15 @@ class Home : Fragment(), ServerAdapter.OnItemClickListener {
 
         // Pass data to ServerDetailFragment using arguments
         val args = Bundle()
-        args.putInt("serverId", server.serverId)
-        args.putString("serverName", server.serverName)
-        args.putString("serverIp", server.serverIp)
-        args.putString("serverOs", server.serverOs)
-        args.putInt("serverRam", server.serverRam)
-        args.putInt("serverStorageType", server.serverStorageType)
-        args.putInt("serverStorageCapacity", server.serverStorageCapacity)
-        args.putString("hospitalName", server.hospitalId.hospitalName)
-        args.putString("cityName", server.hospitalId.cityId.cityName)
+        args.putInt("serverId", server.serverid)
+        args.putString("serverName", server.servername)
+        args.putString("serverIp", server.serverip)
+        args.putString("serverOs", server.serveros)
+        args.putString("serverRam", server.server_ram)
+        args.putString("serverStorageType", server.serverStorageType)
+        args.putString("serverStorageCapacity", server.serverStorageCapacity)
+        args.putString("hospitalName", server.hospitalid.hospitalname)
+        args.putString("cityName", server.hospitalid.cityid.cityname)
 
         serverDetailFragment.arguments = args
 
@@ -101,9 +104,9 @@ class Home : Fragment(), ServerAdapter.OnItemClickListener {
                     jsonObject.getString("servername"),
                     jsonObject.getString("serverip"),
                     jsonObject.getString("serveros"),
-                    jsonObject.getInt("server_ram"),
-                    jsonObject.getInt("serverStorageType"),
-                    jsonObject.getInt("serverStorageCapacity"),
+                    jsonObject.getString("server_ram"),
+                    jsonObject.getString("serverStorageType"),
+                    jsonObject.getString("serverStorageCapacity"),
                     extractHospital(jsonObject.getJSONObject("hostpitalid"))
                 )
 

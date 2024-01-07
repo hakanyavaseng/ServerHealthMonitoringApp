@@ -1,21 +1,37 @@
+package vtys.group.serverhealth.data
 data class ServerDataModel(
-    val serverId: Int,
-    val serverName: String,
-    val serverIp: String,
-    val serverOs: String,
-    val serverRam: Int,
-    val serverStorageType: Int,
-    val serverStorageCapacity: Int,
-    val hospitalId: HospitalDataModel
+    val serverid: Int,
+    val servername: String,
+    val serverip: String,
+    val serveros: String,
+    val server_ram: String,
+    val serverStorageType: String,
+    val serverStorageCapacity: String,
+    val hospitalid: HospitalDataModel
+)
+
+data class ServerDataModelWithIntHospitalId(
+    val serverid: Int,
+    val servername: String,
+    val serverip: String,
+    val serveros: String,
+    val server_ram: String,
+    val serverStorageType: String,
+    val serverStorageCapacity: String,
+    val hospitalid: Int
 )
 
 data class HospitalDataModel(
-    val hospitalId: Int,
-    val hospitalName: String,
-    val cityId: CityDataModel
-)
+    val hospitalid: Int,
+    val hospitalname: String,
+    val cityid: CityDataModel
+) {
+    override fun toString(): String {
+        return hospitalname
+    }
+}
 
 data class CityDataModel(
-    val cityId: Int,
-    val cityName: String
+    val cityid: Int,
+    val cityname: String
 )
