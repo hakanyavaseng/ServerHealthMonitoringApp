@@ -11,12 +11,62 @@
     <!-- Alt kısımda API'den alınan verileri listeleyecek RecyclerView -->
 
 
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/serverRamTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Server RAM: "
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/serverStorageCapacityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Storage Capacity: "
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/serverStorageTypeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Storage Type: "
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/serverOsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Server OS: "
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="250dp"
-        android:layout_height="132dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="1dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout4"
@@ -58,6 +108,7 @@
             android:textStyle="bold" />
 
     </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewDetail"
@@ -115,8 +166,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="409dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:orientation="horizontal"
@@ -124,95 +175,64 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <Button
-            android:id="@+id/btnHealth"
-            android:layout_width="wrap_content"
+        <GridLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/brandPrimaryColor"
-            android:clickable="true"
-            android:contextClickable="true"
-            android:text="Health Data"
-            android:textSize="12sp" />
+            android:columnCount="2"
+            android:rowCount="2">
+            <Button
+                android:id="@+id/btnHealth"
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/brandPrimaryColor"
+                android:clickable="true"
+                android:contextClickable="true"
+                android:text="Health Data"
+                android:textSize="10sp"
+                app:rippleColor="@color/brandSecondaryColor"
+                android:layout_marginEnd="5dp"/>
 
-        <Button
-            android:id="@+id/btnInterrupt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/brandPrimaryColor"
-            android:clickable="true"
-            android:contextClickable="true"
-            android:text="Interrupts"
-            android:textSize="12sp" />
+            <Button
+                android:id="@+id/btnInterrupt"
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/brandPrimaryColor"
+                android:clickable="true"
+                android:contextClickable="true"
+                android:text="Interrupts"
+                android:textSize="10sp"
+                app:rippleColor="@color/brandSecondaryColor" />
 
-        <Button
-            android:id="@+id/btnReport"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="1dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/brandPrimaryColor"
-            android:clickable="true"
-            android:contextClickable="true"
-            android:text="Report"
-            android:textSize="12sp" />
+            <Button
+                android:id="@+id/btnReport"
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_marginEnd="5dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/brandPrimaryColor"
+                android:clickable="true"
+                android:contextClickable="true"
+                android:text="Report"
+                android:textSize="10sp"
+                app:rippleColor="@color/brandSecondaryColor" />
 
-        <Button
-            android:id="@+id/btnExport"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/brandPrimaryColor"
-            android:text="Export"
-            android:textSize="12sp" />
+            <Button
+                android:id="@+id/btnExport"
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/brandPrimaryColor"
+                android:text="Export"
+                android:textSize="10sp"
+                app:rippleColor="@color/brandSecondaryColor" />
+
+        </GridLayout>
+
+
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="125dp"
-        android:layout_height="132dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/serverRamTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Server RAM: "
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-
-        <TextView
-            android:id="@+id/serverStorageCapacityTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Storage Capacity: "
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/serverStorageTypeTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Storage Type: "
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/serverOsTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Server OS: "
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

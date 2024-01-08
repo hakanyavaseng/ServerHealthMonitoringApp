@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/bg_color"
+    android:fillViewport="true"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/RefreshLineerLayout">
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2">
+            <Button
+                android:id="@+id/add_server_button"
+                android:layout_width="0dp"
+                android:layout_columnWeight="1"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="5dp"
+                android:text="Add Server"
+                app:rippleColor="@color/brandSecondaryColor" />
+
+            <Button
+                android:id="@+id/add_hospital_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_columnWeight="1"
+                android:text="Add Hospital"
+                app:rippleColor="@color/brandSecondaryColor" />
+
+            <Button
+                android:id="@+id/add_import_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginEnd="5dp"
+                android:text="Import Server"
+                app:rippleColor="@color/brandSecondaryColor"></Button>
+
+            <Button
+                android:id="@+id/add_import_hospital_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Import Hospital"
+                app:rippleColor="@color/brandSecondaryColor"></Button>
+        </GridLayout>
+    </LinearLayout>
+
+
+    <!-- First FrameLayout -->
+    <FrameLayout
+        android:id="@+id/first_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/RefreshLineerLayout"
+        android:visibility="gone">
+
+        <!-- First FrameLayout for 4 TextInputEditText -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="328dp"
+                android:layout_height="69.89dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextServerName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Server Name:" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="328dp"
+                android:layout_height="69.89dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextServerIP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Server IP:"
+                android:paddingBottom="10dp">
+            </com.google.android.material.textfield.TextInputEditText>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="328dp"
+                android:layout_height="69.89dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:background="@drawable/input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:paddingStart="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="ServerOS:"
+                    />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupServerOS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <!-- RadioButton Windows -->
+                    <RadioButton
+                        android:id="@+id/radioButtonWindows"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Windows"
+                        android:layout_marginEnd="5dp"/>
+
+                    <!-- RadioButton Linux -->
+                    <RadioButton
+                        android:id="@+id/radioButtonLinux"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Linux" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="328dp"
+                android:layout_height="69.89dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextServerRAM"
+                android:inputType="numberDecimal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Server RAM:" />
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="328dp"
+                android:layout_height="69.89dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="20sp"
+                    android:paddingStart="5dp"
+                    android:text="Server Storage:Type" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupServerStorageType"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- RadioButton SSD -->
+                    <RadioButton
+                        android:id="@+id/radioButtonSSD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SSD" />
+
+                    <!-- RadioButton HDD -->
+                    <RadioButton
+                        android:id="@+id/radioButtonHDD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HDD" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="328dp"
+                android:layout_gravity="center"
+                android:layout_height="69.89dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextServerStorageCapacity"
+                android:layout_width="match_parent"
+                android:inputType="numberDecimal"
+                android:layout_height="match_parent"
+                android:hint="Server Storage Capacity" />
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="328dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+            <Spinner
+                android:id="@+id/hospitalSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/server_save_button"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Server Save"
+                app:rippleColor="@color/brandSecondaryColor" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Second FrameLayout -->
+    <FrameLayout
+        android:id="@+id/second_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/RefreshLineerLayout"
+        android:visibility="gone">
+
+        <!-- Second FrameLayout for 2 TextInputEditText and 1 TextView -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:padding="16dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="vertical"
+            android:paddingTop="50dp">
+
+            <LinearLayout
+                android:layout_width="328dp"
+                android:layout_height="69.89dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextHospitalName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Hospital Name" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="328dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+            <Spinner
+                android:id="@+id/citySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/hospital_save_button"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Hospital Save"
+                app:rippleColor="@color/brandSecondaryColor" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+</RelativeLayout>
+</ScrollView>

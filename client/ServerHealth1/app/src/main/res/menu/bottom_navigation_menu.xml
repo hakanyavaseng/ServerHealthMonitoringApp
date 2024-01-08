@@ -12,8 +12,8 @@
     <!-- Diğer öğeleri ekleyin -->
     <item
         android:id="@+id/navigation_refresh"
-        android:icon="@drawable/refresh_cw"
-        android:title="@string/refresh" />
+        android:icon="@drawable/plus"
+        android:title="@string/add" />
     <!-- Diğer öğeleri ekleyin -->
     <item
         android:id="@+id/navigation_notification"

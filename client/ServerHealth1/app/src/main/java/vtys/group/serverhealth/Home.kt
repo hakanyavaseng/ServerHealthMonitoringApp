@@ -31,6 +31,9 @@ class Home : Fragment(), ServerAdapter.OnItemClickListener {
 
 
     override fun onCreateView(
+
+
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
