@@ -43,21 +43,22 @@
                 app:rippleColor="@color/brandSecondaryColor" />
 
             <Button
-                android:id="@+id/add_import_button"
+                android:id="@+id/serverImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="5dp"
                 android:text="Import Server"
-                app:rippleColor="@color/brandSecondaryColor"></Button>
+                app:rippleColor="@color/brandSecondaryColor"/>
 
             <Button
-                android:id="@+id/add_import_hospital_button"
+                android:id="@+id/hospitalImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:text="Import Hospital"
-                app:rippleColor="@color/brandSecondaryColor"></Button>
+                app:rippleColor="@color/brandSecondaryColor"/>
+
         </GridLayout>
     </LinearLayout>
 

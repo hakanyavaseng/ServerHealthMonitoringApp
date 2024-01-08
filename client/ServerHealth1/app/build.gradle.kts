@@ -80,6 +80,8 @@ dependencies {
     //Apache POI
     implementation("org.apache.poi:poi:5.2.0")
     implementation("org.apache.poi:poi-ooxml:5.2.0")
+    //CSV Reader
+    implementation("com.opencsv:opencsv:5.9")
 
 
 }

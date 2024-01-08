@@ -1,3 +1,6 @@
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +13,8 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +27,7 @@ import vtys.group.serverhealth.service.impl.CreateService
 import vtys.group.serverhealth.adapter.CityAdapter
 import vtys.group.serverhealth.model.CityDataModel
 import vtys.group.serverhealth.adapter.HospitalAdapter
+import vtys.group.serverhealth.fileops.ServerDataManager
 import vtys.group.serverhealth.model.HospitalDataModel
 import vtys.group.serverhealth.model.ServerDataModelWithIntHospitalId
 import vtys.group.serverhealth.service.impl.RetrofitService
@@ -44,8 +50,15 @@ class Refresh : Fragment() {
     private lateinit var editTextHospitalName: EditText
     private lateinit var citySpinner: Spinner
     private lateinit var serverSaveButton: Button
-
+    private lateinit var serverImportButton: Button
+    private lateinit var hospitalImportButton: Button
+    private val FILE_TYPE_KEY = "fileType"
     private var isContentOneVisible = true
+    private lateinit var serverDataManager: ServerDataManager
+
+    private lateinit var serverFileLauncher: ActivityResultLauncher<String>
+    private lateinit var hospitalFileLauncher: ActivityResultLauncher<String>
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,7 +66,6 @@ class Refresh : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_refresh, container, false)
-
         val retrofitService = RetrofitService()
 
         firstFrameLayout = view.findViewById(R.id.first_frame_layout)
@@ -71,6 +83,11 @@ class Refresh : Fragment() {
         editTextHospitalName = view.findViewById(R.id.editTextHospitalName)
         citySpinner = view.findViewById(R.id.citySpinner)
         serverSaveButton = view.findViewById(R.id.server_save_button)
+        serverImportButton = view.findViewById(R.id.serverImportButton)
+        hospitalImportButton = view.findViewById(R.id.hospitalImportButton)
+
+
+
 
         addServerButton.setOnClickListener {
             displayContent(true)
@@ -187,11 +204,44 @@ class Refresh : Fragment() {
         val retrofit = retrofitService.getRetrofit()
         createService = retrofit.create(CreateService::class.java)
 
-        // Verileri API'den alıp Spinner'ı doldurun
+        serverDataManager = ServerDataManager(createService, requireContext())
+
+
+        serverFileLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            handleFileSelection(uri, "server")
+        }
+
+        hospitalFileLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            handleFileSelection(uri, "hospital")
+        }
+
+        serverImportButton.setOnClickListener {
+            serverFileLauncher.launch("*/*")
+        }
+
+        hospitalImportButton.setOnClickListener {
+            hospitalFileLauncher.launch("*/*")
+        }
+
+
+
+
         fetchCities()
         fetchHospitals()
 
         return view
+    }
+
+    private fun handleFileSelection(uri: Uri?, fileType: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            uri?.let {
+                if (fileType == "server") {
+                    serverDataManager.importServersFromCSV(it)
+                } else {
+                    serverDataManager.importHospitalsFromCSV(it)
+                }
+            }
+        }
     }
 
     private fun displayContent(isFirstContentVisible: Boolean) {
