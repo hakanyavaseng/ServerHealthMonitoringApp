@@ -2,42 +2,38 @@ package vtys.group.serverhealth
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import vtys.group.serverhealth.auth.LoginService
 import vtys.group.serverhealth.auth.VerificationData
+import vtys.group.serverhealth.service.RetrofitService
 
 class ValidationActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_validation)
+        val retrofitService = RetrofitService()
 
         val receivedUsername = intent.getStringExtra("USERNAME")
 
-        val intent= Intent(this,LoginActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
 
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://serverhealth.azurewebsites.net")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val retrofit = retrofitService.getRetrofit()
 
         val loginService = retrofit.create(LoginService::class.java)
 
 
-
-        val btnContinue=findViewById<Button>(R.id.btn_validation)
+        val btnContinue = findViewById<Button>(R.id.btn_validation)
         btnContinue.setOnClickListener {
 
             val txtBox1 = findViewById<EditText>(R.id.val_input_index0)
@@ -45,7 +41,8 @@ class ValidationActivity : AppCompatActivity() {
             val txtBox3 = findViewById<EditText>(R.id.val_input_index2)
             val txtBox4 = findViewById<EditText>(R.id.val_input_index3)
 
-            val entered_verification_code = txtBox1.text.toString() + txtBox2.text.toString() + txtBox3.text.toString() + txtBox4.text.toString()
+            val entered_verification_code =
+                txtBox1.text.toString() + txtBox2.text.toString() + txtBox3.text.toString() + txtBox4.text.toString()
 
 
             val verificationData = VerificationData(
@@ -99,14 +96,6 @@ class ValidationActivity : AppCompatActivity() {
             })
 
 
-
-
-
-
-
-
-
-
-
+        }
     }
-}}
+}

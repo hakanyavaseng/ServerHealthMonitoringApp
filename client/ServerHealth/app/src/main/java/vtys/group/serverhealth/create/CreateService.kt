@@ -6,7 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import vtys.group.serverhealth.data.CityDataModel
 import vtys.group.serverhealth.data.HospitalDataModel
-import vtys.group.serverhealth.data.ServerDataModel
 import vtys.group.serverhealth.data.ServerDataModelWithIntHospitalId
 
 interface CreateService {

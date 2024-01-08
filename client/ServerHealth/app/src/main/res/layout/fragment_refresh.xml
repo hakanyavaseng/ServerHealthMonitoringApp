@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color">
@@ -55,15 +54,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp">
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ServerOS:"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:text="ServerOS:" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupServerOS"
@@ -96,15 +95,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp">
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Server Storage:Type"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:text="Server Storage:Type" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupServerStorageType"
@@ -143,10 +142,10 @@
                 android:id="@+id/server_save_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Server Save"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"/>
+                android:layout_marginEnd="50dp"
+                android:text="Server Save" />
 
         </LinearLayout>
     </FrameLayout>
@@ -181,10 +180,10 @@
                 android:id="@+id/hospital_save_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hospital Save"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"/>
+                android:layout_marginEnd="50dp"
+                android:text="Hospital Save" />
 
         </LinearLayout>
     </FrameLayout>

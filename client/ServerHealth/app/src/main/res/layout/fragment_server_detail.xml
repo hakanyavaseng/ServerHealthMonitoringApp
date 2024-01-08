@@ -131,9 +131,9 @@
             android:layout_weight="1"
             android:backgroundTint="@color/brandPrimaryColor"
             android:clickable="true"
-            android:textSize="12sp"
             android:contextClickable="true"
-            android:text="Health Data" />
+            android:text="Health Data"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btnInterrupt"
@@ -142,9 +142,9 @@
             android:layout_weight="1"
             android:backgroundTint="@color/brandPrimaryColor"
             android:clickable="true"
-            android:textSize="12sp"
             android:contextClickable="true"
-            android:text="Interrupts" />
+            android:text="Interrupts"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btnReport"
@@ -155,17 +155,17 @@
             android:backgroundTint="@color/brandPrimaryColor"
             android:clickable="true"
             android:contextClickable="true"
-            android:textSize="12sp"
-            android:text="Report" />
+            android:text="Report"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btnExport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/brandPrimaryColor"
             android:layout_weight="1"
-            android:textSize="12sp"
-            android:text="Export" />
+            android:backgroundTint="@color/brandPrimaryColor"
+            android:text="Export"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout

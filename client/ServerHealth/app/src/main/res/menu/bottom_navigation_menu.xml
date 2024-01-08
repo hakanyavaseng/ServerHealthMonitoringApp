@@ -6,23 +6,23 @@
         android:title="@string/home" />
     <item
         android:id="@+id/navigation_favourite"
-        android:title="@string/favourite"
         android:icon="@drawable/heart"
-        android:iconTint="@color/brandPrimaryColor"/>
+        android:iconTint="@color/brandPrimaryColor"
+        android:title="@string/favourite" />
     <!-- Diğer öğeleri ekleyin -->
     <item
         android:id="@+id/navigation_refresh"
-        android:title="@string/refresh"
-        android:icon="@drawable/refresh_cw" />
+        android:icon="@drawable/refresh_cw"
+        android:title="@string/refresh" />
     <!-- Diğer öğeleri ekleyin -->
     <item
         android:id="@+id/navigation_notification"
-        android:title="@string/notifications"
-        android:icon="@drawable/bell" />
+        android:icon="@drawable/bell"
+        android:title="@string/notifications" />
     <!-- Diğer öğeleri ekleyin -->
     <item
         android:id="@+id/navigation_profile"
-        android:title="@string/profile"
-        android:icon="@drawable/profile" />
+        android:icon="@drawable/profile"
+        android:title="@string/profile" />
     <!-- Diğer öğeleri ekleyin -->
 </menu>

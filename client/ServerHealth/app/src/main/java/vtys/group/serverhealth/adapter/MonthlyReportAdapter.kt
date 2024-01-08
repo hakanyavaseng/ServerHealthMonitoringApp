@@ -14,8 +14,8 @@ class MonthlyReportAdapter(private var monthlyReportList: List<MonthlyReportData
     class MonthlyReportViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
-        val monthName : TextView = itemView.findViewById(R.id.monthNameTextView)
-        val interruptCountMonthly : TextView = itemView.findViewById(R.id.interruptCountTextView)
+        val monthName: TextView = itemView.findViewById(R.id.monthNameTextView)
+        val interruptCountMonthly: TextView = itemView.findViewById(R.id.interruptCountTextView)
 
     }
 
@@ -30,7 +30,10 @@ class MonthlyReportAdapter(private var monthlyReportList: List<MonthlyReportData
         holder.monthName.text = report.month
         holder.interruptCountMonthly.text = report.interruptCount.toString()
 
-        Log.d ("MonthlyReportAdapter", "Month: ${report.month}, Interrupt Count: ${report.interruptCount}")
+        Log.d(
+            "MonthlyReportAdapter",
+            "Month: ${report.month}, Interrupt Count: ${report.interruptCount}"
+        )
     }
 
     override fun getItemCount(): Int {
@@ -45,7 +48,7 @@ class MonthlyReportAdapter(private var monthlyReportList: List<MonthlyReportData
 }
 
 
-data class MonthlyReportDataModel (
+data class MonthlyReportDataModel(
     val month: String,
     val interruptCount: Int
 )

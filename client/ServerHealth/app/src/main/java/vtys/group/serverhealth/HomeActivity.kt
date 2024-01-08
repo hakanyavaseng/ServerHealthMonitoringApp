@@ -2,17 +2,13 @@ package vtys.group.serverhealth
 
 import Home
 import Refresh
-import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import vtys.group.serverhealth.databinding.ActivityHomeBinding
 
 
@@ -30,8 +26,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val account: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
-
-
 
 
         // Initialize the GoogleSignInClient

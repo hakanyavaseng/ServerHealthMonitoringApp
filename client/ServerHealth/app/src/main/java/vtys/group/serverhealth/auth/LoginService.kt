@@ -4,7 +4,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface LoginService{
+interface LoginService {
     @POST("/api/auth/register")
     fun registerUser(@Body registrationData: RegistrationData): Call<Void>
 
@@ -15,7 +15,7 @@ interface LoginService{
     fun loginUser(@Body loginData: LoginData): Call<Void>
 
     @POST("/api/auth/googlelogin")
-    fun googleLogin(@Body googleUser : GoogleUser): Call<Void>
+    fun googleLogin(@Body googleUser: GoogleUser): Call<Void>
 
 }
 
@@ -34,6 +34,7 @@ data class LoginData(
     val username: String,
     val password: String
 )
+
 data class GoogleUser(
     val email: String
 )

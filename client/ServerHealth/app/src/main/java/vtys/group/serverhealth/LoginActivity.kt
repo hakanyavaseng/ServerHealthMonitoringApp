@@ -2,28 +2,18 @@ package vtys.group.serverhealth
 
 import android.content.ContentValues.TAG
 import android.content.Intent
-import android.content.IntentSender
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.IntentSenderRequest
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.android.gms.auth.api.identity.Identity
-import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.tasks.Task
-import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,17 +22,19 @@ import retrofit2.converter.gson.GsonConverterFactory
 import vtys.group.serverhealth.auth.GoogleUser
 import vtys.group.serverhealth.auth.LoginData
 import vtys.group.serverhealth.auth.LoginService
+import vtys.group.serverhealth.service.RetrofitService
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var gso : GoogleSignInOptions
-    private lateinit var gsc : GoogleSignInClient
-
+    private lateinit var gso: GoogleSignInOptions
+    private lateinit var gsc: GoogleSignInClient
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val retrofitService = RetrofitService()
         val intentLogin = Intent(this, HomeActivity::class.java)
 
         val registerButton = findViewById<Button>(R.id.btn_register)
@@ -61,9 +53,9 @@ class LoginActivity : AppCompatActivity() {
 
         gsc = GoogleSignIn.getClient(this, gso)
 
-        val account : GoogleSignInAccount?= GoogleSignIn.getLastSignedInAccount(this)
+        val account: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
 
-        if(account != null){
+        if (account != null) {
             intentLogin.putExtra("ID_TOKEN", account.idToken)
             startActivity(intentLogin)
             finish()
@@ -76,8 +68,6 @@ class LoginActivity : AppCompatActivity() {
 
             val signInIntent = gsc.signInIntent
             startActivityForResult(signInIntent, 1)
-
-
 
 
         }
@@ -94,11 +84,7 @@ class LoginActivity : AppCompatActivity() {
                 password = txtLoginPassword.text.toString()
             )
 
-            val retrofit = Retrofit.Builder()
-                .baseUrl("https://serverhealth.azurewebsites.net")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
+            val retrofit = retrofitService.getRetrofit()
             val loginService = retrofit.create(LoginService::class.java)
 
             val callLogin: Call<Void> = loginService.loginUser(loginData)
@@ -150,9 +136,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == 1)
-        {
-            val task : Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+        if (requestCode == 1) {
+            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
 
             try {
 
@@ -160,17 +145,16 @@ class LoginActivity : AppCompatActivity() {
                 goToHome(task.getResult(ApiException::class.java))
 
 
-            }catch (e : ApiException){
+            } catch (e: ApiException) {
                 Toast.makeText(this, "Google sign in failed", Toast.LENGTH_SHORT).show()
             }
-
 
 
         }
 
     }
 
-    private fun goToHome(account: GoogleSignInAccount){
+    private fun goToHome(account: GoogleSignInAccount) {
 
         val email = account.email
         sendUserToApi(email)
@@ -180,43 +164,43 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun sendUserToApi(email : String?) {
-            val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.0.0.2/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+    private fun sendUserToApi(email: String?) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://10.0.0.2/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
-            val loginService = retrofit.create(LoginService::class.java)
+        val loginService = retrofit.create(LoginService::class.java)
 
-            val GoogleUser = GoogleUser(
-               email = email.toString()
-            )
+        val GoogleUser = GoogleUser(
+            email = email.toString()
+        )
 
-            val call: Call<Void> = loginService.googleLogin(GoogleUser)
+        val call: Call<Void> = loginService.googleLogin(GoogleUser)
 
-            call.enqueue(object : Callback<Void> {
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    if (response.isSuccessful) {
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
 
-                        Toast.makeText(
-                            this@LoginActivity,
-                            "Google Login successful.",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "Google Login successful.",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
-                    } else {
+                } else {
 
-                        Log.d(TAG, "onResponse: ${response.message()}")
+                    Log.d(TAG, "onResponse: ${response.message()}")
 
-                    }
                 }
+            }
 
-                override fun onFailure(call: Call<Void>, t: Throwable) {
-                    // Handle failure
-                    println("Network error: ${t.message}")
-                    t.printStackTrace()
-                }
-            })
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                // Handle failure
+                println("Network error: ${t.message}")
+                t.printStackTrace()
+            }
+        })
 
     }
 

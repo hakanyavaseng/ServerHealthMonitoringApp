@@ -1,4 +1,5 @@
 package vtys.group.serverhealth.data
+
 data class ServerDataModel(
     val serverid: Int,
     val servername: String,

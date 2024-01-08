@@ -1,25 +1,31 @@
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.Button
+import android.widget.EditText
+import android.widget.FrameLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.Spinner
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import vtys.group.serverhealth.R
 import vtys.group.serverhealth.create.CreateService
 import vtys.group.serverhealth.data.CityAdapter
-import vtys.group.serverhealth.data.HospitalDataModel
 import vtys.group.serverhealth.data.CityDataModel
 import vtys.group.serverhealth.data.HospitalAdapter
-import vtys.group.serverhealth.data.ServerDataModel
+import vtys.group.serverhealth.data.HospitalDataModel
 import vtys.group.serverhealth.data.ServerDataModelWithIntHospitalId
+import vtys.group.serverhealth.service.RetrofitService
+
 
 class Refresh : Fragment() {
     private lateinit var createService: CreateService
@@ -35,7 +41,7 @@ class Refresh : Fragment() {
     private lateinit var editTextServerStorageCapacity: EditText
     private lateinit var hospitalSpinner: Spinner
     private lateinit var hospitalSaveButton: Button
-    private lateinit var editTextHospitalName : EditText
+    private lateinit var editTextHospitalName: EditText
     private lateinit var citySpinner: Spinner
     private lateinit var serverSaveButton: Button
 
@@ -47,6 +53,8 @@ class Refresh : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_refresh, container, false)
+
+        val retrofitService = RetrofitService()
 
         firstFrameLayout = view.findViewById(R.id.first_frame_layout)
         secondFrameLayout = view.findViewById(R.id.second_frame_layout)
@@ -89,7 +97,8 @@ class Refresh : Fragment() {
 
             val selectedStorageTypeId = radioGroupServerStorageType.checkedRadioButtonId
             if (selectedStorageTypeId != -1) {
-                val selectedStorageTypeRadioButton = view.findViewById<RadioButton>(selectedStorageTypeId)
+                val selectedStorageTypeRadioButton =
+                    view.findViewById<RadioButton>(selectedStorageTypeId)
                 selectedStorageType = selectedStorageTypeRadioButton.text.toString()
             } else {
                 // Handle the case when no storage type radio button is selected
@@ -120,9 +129,17 @@ class Refresh : Fragment() {
                     withContext(Dispatchers.Main) {
                         if (isAdded) {
                             if (response.isSuccessful) {
-                                Toast.makeText(requireContext(), "Server added successfully", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Server added successfully",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             } else {
-                                Toast.makeText(requireContext(), "Server could not be added", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Server could not be added",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
                     }
@@ -149,7 +166,11 @@ class Refresh : Fragment() {
                     withContext(Dispatchers.Main) {
                         if (isAdded) {
                             if (response.isSuccessful) {
-                                Toast.makeText(requireContext(), "Hospital added successfully", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Hospital added successfully",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             } else {
                                 // Handle unsuccessful response
                             }
@@ -163,10 +184,7 @@ class Refresh : Fragment() {
         }
 
         // Retrofit objesini oluşturun ve ApiService'yi initialize edin
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://serverhealth.azurewebsites.net")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val retrofit = retrofitService.getRetrofit()
         createService = retrofit.create(CreateService::class.java)
 
         // Verileri API'den alıp Spinner'ı doldurun
@@ -206,21 +224,22 @@ class Refresh : Fragment() {
                         val hospitalSpinner = view?.findViewById<Spinner>(R.id.hospitalSpinner)
                         hospitalSpinner?.adapter = adapter
 
-                        hospitalSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                            override fun onItemSelected(
-                                parentView: AdapterView<*>?,
-                                selectedItemView: View?,
-                                position: Int,
-                                id: Long
-                            ) {
-                                // Handle the selected Hospital ID if needed
-                                val selectedHospitalId = adapter.getHospitalId(position)
-                            }
+                        hospitalSpinner?.onItemSelectedListener =
+                            object : AdapterView.OnItemSelectedListener {
+                                override fun onItemSelected(
+                                    parentView: AdapterView<*>?,
+                                    selectedItemView: View?,
+                                    position: Int,
+                                    id: Long
+                                ) {
+                                    // Handle the selected Hospital ID if needed
+                                    val selectedHospitalId = adapter.getHospitalId(position)
+                                }
 
-                            override fun onNothingSelected(parentView: AdapterView<*>?) {
-                                // Handle when nothing is selected
+                                override fun onNothingSelected(parentView: AdapterView<*>?) {
+                                    // Handle when nothing is selected
+                                }
                             }
-                        }
                     } else {
                         // Handle unsuccessful response
                     }
@@ -258,21 +277,22 @@ class Refresh : Fragment() {
                         val citySpinner = view?.findViewById<Spinner>(R.id.citySpinner)
                         citySpinner?.adapter = cityAdapter
 
-                        citySpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                            override fun onItemSelected(
-                                parentView: AdapterView<*>?,
-                                selectedItemView: View?,
-                                position: Int,
-                                id: Long
-                            ) {
-                                // Handle the selected city name if needed
-                                val selectedCityName = sortedCities[position].cityname
-                            }
+                        citySpinner?.onItemSelectedListener =
+                            object : AdapterView.OnItemSelectedListener {
+                                override fun onItemSelected(
+                                    parentView: AdapterView<*>?,
+                                    selectedItemView: View?,
+                                    position: Int,
+                                    id: Long
+                                ) {
+                                    // Handle the selected city name if needed
+                                    val selectedCityName = sortedCities[position].cityname
+                                }
 
-                            override fun onNothingSelected(parentView: AdapterView<*>?) {
-                                // Handle when nothing is selected
+                                override fun onNothingSelected(parentView: AdapterView<*>?) {
+                                    // Handle when nothing is selected
+                                }
                             }
-                        }
                     } else {
                         // Handle unsuccessful response
                     }

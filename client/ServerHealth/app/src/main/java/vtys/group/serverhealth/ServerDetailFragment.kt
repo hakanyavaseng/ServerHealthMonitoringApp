@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -22,7 +21,6 @@ import vtys.group.serverhealth.adapter.DailyReportAdapter
 import vtys.group.serverhealth.adapter.HealthDataRecyclerAdapter
 import vtys.group.serverhealth.adapter.InterruptsAdapter
 import vtys.group.serverhealth.adapter.MonthlyReportAdapter
-import vtys.group.serverhealth.model.HealthDataModel
 import vtys.group.serverhealth.viewmodel.ServerDetailViewModel
 import java.io.File
 import java.io.FileOutputStream
@@ -33,10 +31,10 @@ class ServerDetailFragment : Fragment() {
     private lateinit var recyclerViewDetail: RecyclerView
 
 
-    private val serverDetailAdapter = HealthDataRecyclerAdapter(emptyList())
+    private val healthDataRecyclerAdapter = HealthDataRecyclerAdapter(emptyList())
     private val interruptsAdapter = InterruptsAdapter(emptyList())
     private val monthlyReportAdapter = MonthlyReportAdapter(emptyList())
-    private  val dailyReportAdapter = DailyReportAdapter(emptyList())
+    private val dailyReportAdapter = DailyReportAdapter(emptyList())
     //val serverDetailViewModel= ServerDetailViewModel()
 
     override fun onCreateView(
@@ -79,44 +77,43 @@ class ServerDetailFragment : Fragment() {
         val btnReport = view.findViewById<Button>(R.id.btnReport)
         val btnExport = view.findViewById<Button>(R.id.btnExport)
 
-        btnHealth.setOnClickListener{
-            if(radioWeek.isChecked){
+        btnHealth.setOnClickListener {
+            if (radioWeek.isChecked) {
                 viewModel.refreshDataWeek(serverId = serverId)
                 recyclerViewDetail.layoutManager = LinearLayoutManager(requireContext())
-                recyclerViewDetail.adapter = serverDetailAdapter
+                recyclerViewDetail.adapter = healthDataRecyclerAdapter
                 observeLiveData()
-            }
-            else if(radioMonth.isChecked){
+                healthDataRecyclerAdapter.clearData()
+
+            } else if (radioMonth.isChecked) {
                 viewModel.refreshDataMonth(serverId = serverId)
                 recyclerViewDetail.layoutManager = LinearLayoutManager(requireContext())
-                recyclerViewDetail.adapter = serverDetailAdapter
+                recyclerViewDetail.adapter = healthDataRecyclerAdapter
                 observeLiveData()
-            }
-            else if(radioYear.isChecked){
+                healthDataRecyclerAdapter.clearData()
+
+            } else if (radioYear.isChecked) {
                 viewModel.refreshDataYear(serverId = serverId)
                 recyclerViewDetail.layoutManager = LinearLayoutManager(requireContext())
-                recyclerViewDetail.adapter = serverDetailAdapter
+                recyclerViewDetail.adapter = healthDataRecyclerAdapter
                 observeLiveData()
+                healthDataRecyclerAdapter.clearData()
+
             }
         }
 
-        btnInterrupt.setOnClickListener{
-            if(radioWeek.isChecked)
-            {
+        btnInterrupt.setOnClickListener {
+            if (radioWeek.isChecked) {
                 viewModel.refreshInterruptWeek(serverId = serverId)
                 recyclerViewDetail.layoutManager = LinearLayoutManager(requireContext())
                 recyclerViewDetail.adapter = interruptsAdapter
                 observeInterruptsLiveData()
-            }
-            else if(radioMonth.isChecked)
-            {
+            } else if (radioMonth.isChecked) {
                 viewModel.refreshInterruptMonth(serverId = serverId)
                 recyclerViewDetail.layoutManager = LinearLayoutManager(requireContext())
                 recyclerViewDetail.adapter = interruptsAdapter
                 observeInterruptsLiveData()
-            }
-            else if(radioYear.isChecked)
-            {
+            } else if (radioYear.isChecked) {
                 viewModel.refreshInterruptYear(serverId = serverId)
                 recyclerViewDetail.layoutManager = LinearLayoutManager(requireContext())
                 recyclerViewDetail.adapter = interruptsAdapter
@@ -125,34 +122,29 @@ class ServerDetailFragment : Fragment() {
 
         }
 
-        btnReport.setOnClickListener{
+        btnReport.setOnClickListener {
 
 
-            if(radioYear.isChecked)
-            {
+            if (radioYear.isChecked) {
                 viewModel.refreshMonthlyReport(serverId = serverId)
                 recyclerViewDetail.layoutManager = LinearLayoutManager(requireContext())
                 recyclerViewDetail.adapter = monthlyReportAdapter
                 observeMonthlyReportLiveData()
-            }
-            else if(radioWeek.isChecked)
-            {
+            } else if (radioWeek.isChecked) {
                 viewModel.refreshDailyReport(serverId = serverId)
                 recyclerViewDetail.layoutManager = LinearLayoutManager(requireContext())
                 recyclerViewDetail.adapter = dailyReportAdapter
                 observeDailyReportLiveData()
 
-            }
-
-            else {
+            } else {
                 //TODO DO NOTHING
             }
         }
 
-        btnExport.setOnClickListener{
-            if(recyclerViewDetail.adapter == serverDetailAdapter)
+        btnExport.setOnClickListener {
+            if (recyclerViewDetail.adapter == healthDataRecyclerAdapter)
                 exportHealthDataToXls(requireContext(), recyclerViewDetail)
-            else if(recyclerViewDetail.adapter == interruptsAdapter)
+            else if (recyclerViewDetail.adapter == interruptsAdapter)
                 exportInterruptsToXls()
         }
 
@@ -183,7 +175,7 @@ class ServerDetailFragment : Fragment() {
                 if (healthDataList.isNotEmpty()) {
                     // Show data
                     recyclerViewDetail.visibility = View.VISIBLE
-                    serverDetailAdapter.setData(healthDataList)
+                    healthDataRecyclerAdapter.setData(healthDataList)
                 } else {
                     // No data available
                     recyclerViewDetail.visibility = View.GONE
@@ -232,7 +224,7 @@ class ServerDetailFragment : Fragment() {
             monthlyReportData?.let { monthlyReportList ->
                 recyclerViewDetail.visibility = View.VISIBLE
                 monthlyReportAdapter.setData(monthlyReportList)
-               }
+            }
         })
 
         viewModel.monthlyReportError.observe(viewLifecycleOwner, Observer { error ->

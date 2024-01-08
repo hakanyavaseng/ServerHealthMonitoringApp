@@ -15,8 +15,10 @@ class HealthDataRecyclerAdapter(private var healthDataList: List<HealthDataModel
         val dataDateTimeTextView: TextView = itemView.findViewById(R.id.dataDateTimeTextView)
         val heartbeatStatusTextView: TextView = itemView.findViewById(R.id.heartbeatStatusTextView)
         val cpuUsageTextView: TextView = itemView.findViewById(R.id.cpuUsageTextView)
-        val temperatureStatusTextView: TextView = itemView.findViewById(R.id.temperatureStatusTextView)
-        val ambientTemperatureStatusTextView: TextView = itemView.findViewById(R.id.ambientTemperatureStatusTextView)
+        val temperatureStatusTextView: TextView =
+            itemView.findViewById(R.id.temperatureStatusTextView)
+        val ambientTemperatureStatusTextView: TextView =
+            itemView.findViewById(R.id.ambientTemperatureStatusTextView)
         val ramUsageTextView: TextView = itemView.findViewById(R.id.ramUsageTextView)
         val storageUsageTextView: TextView = itemView.findViewById(R.id.StorageUsageTextView)
         val energyUsageTextView: TextView = itemView.findViewById(R.id.energyUsageTextView)
@@ -53,5 +55,10 @@ class HealthDataRecyclerAdapter(private var healthDataList: List<HealthDataModel
 
     fun getHealthdataList(): List<HealthDataModel> {
         return healthDataList
+    }
+
+    fun clearData() {
+        healthDataList = emptyList()
+        notifyDataSetChanged()
     }
 }

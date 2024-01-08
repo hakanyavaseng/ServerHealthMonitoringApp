@@ -1,30 +1,25 @@
 package vtys.group.serverhealth
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
-import com.google.android.material.textfield.TextInputEditText
+import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import vtys.group.serverhealth.auth.LoginService
 import vtys.group.serverhealth.auth.RegistrationData
+import vtys.group.serverhealth.service.RetrofitService
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        val retrofitService = RetrofitService()
         val backToLoginButton = findViewById<Button>(R.id.btn_back_to_login)
 
         backToLoginButton.setOnClickListener {
@@ -39,10 +34,8 @@ class RegisterActivity : AppCompatActivity() {
         btnRegister.setOnClickListener {
 
             //TODO Kayıt olma işlemleri
-            val retrofit = Retrofit.Builder()
-                .baseUrl("https://serverhealth.azurewebsites.net") // Remove extra trailing slash
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+            val retrofit = retrofitService.getRetrofit()
+
 
             val loginService = retrofit.create(LoginService::class.java)
 
@@ -111,8 +104,6 @@ class RegisterActivity : AppCompatActivity() {
         intent.putExtra("USERNAME", sended_username)
         startActivity(intent)
     }
-
-
 
 
 }

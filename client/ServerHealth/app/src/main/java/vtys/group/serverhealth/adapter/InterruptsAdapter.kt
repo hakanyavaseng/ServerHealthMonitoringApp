@@ -39,7 +39,10 @@ class InterruptsAdapter(private var interruptsList: List<InterruptDataModel>) :
         holder.serverIdTextView.text = interrupt.serverid.servername ?: "N/A"
 
         // Log the values
-        Log.d("InterruptAdapter", "Date: ${interrupt.interruptdate}, Time: ${interrupt.interrupttime}")
+        Log.d(
+            "InterruptAdapter",
+            "Date: ${interrupt.interruptdate}, Time: ${interrupt.interrupttime}"
+        )
     }
 
     override fun getItemCount(): Int {
@@ -49,6 +52,7 @@ class InterruptsAdapter(private var interruptsList: List<InterruptDataModel>) :
     fun getInterruptsList(): List<InterruptDataModel> {
         return interruptsList
     }
+
     // Use this method to update the dataset
     fun setData(newInterruptsList: List<InterruptDataModel>) {
         interruptsList = newInterruptsList

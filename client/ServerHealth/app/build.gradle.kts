@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -38,7 +36,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        viewBinding =true
+        viewBinding = true
     }
 }
 
@@ -62,7 +60,7 @@ dependencies {
 
     // Retrofit2
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     // Gson (for JSON parsing)
     implementation("com.google.code.gson:gson:2.10.1")
@@ -71,19 +69,17 @@ dependencies {
     // Volley
     implementation("com.android.volley:volley:1.2.1")
 
-    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     //Google Login
-    implementation ("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
 
     //Glide
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     //Apache POI
-    implementation ("org.apache.poi:poi:5.2.0")
-    implementation ("org.apache.poi:poi-ooxml:5.2.0")
-
-
+    implementation("org.apache.poi:poi:5.2.0")
+    implementation("org.apache.poi:poi-ooxml:5.2.0")
 
 
 }

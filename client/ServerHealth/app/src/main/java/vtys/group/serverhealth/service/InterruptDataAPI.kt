@@ -6,7 +6,6 @@ import retrofit2.http.Path
 import vtys.group.serverhealth.adapter.DailyReportDataModel
 import vtys.group.serverhealth.adapter.MonthlyReportDataModel
 import vtys.group.serverhealth.data.InterruptDataModel
-import vtys.group.serverhealth.model.HealthDataModel
 
 interface InterruptDataAPI {
 
@@ -24,8 +23,6 @@ interface InterruptDataAPI {
 
     @GET("/api/interrupts/getdailyreport/{serverid}")
     fun interruptDataDailyReport(@Path("serverid") serverId: Int): Call<ArrayList<DailyReportDataModel>>
-
-
 
 
 }

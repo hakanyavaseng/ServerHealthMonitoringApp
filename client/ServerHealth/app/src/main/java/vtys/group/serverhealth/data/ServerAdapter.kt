@@ -7,7 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vtys.group.serverhealth.R
 
-class ServerAdapter(private var serverList: List<ServerDataModel>, private val itemClickListener: OnItemClickListener) :
+class ServerAdapter(
+    private var serverList: List<ServerDataModel>,
+    private val itemClickListener: OnItemClickListener
+) :
     RecyclerView.Adapter<ServerAdapter.ServerViewHolder>() {
     private var originalServerList: List<ServerDataModel> = serverList
 

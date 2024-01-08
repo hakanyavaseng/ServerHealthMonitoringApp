@@ -3,7 +3,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,8 +11,6 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.gson.Gson
 import org.json.JSONObject
 import vtys.group.serverhealth.R
 import vtys.group.serverhealth.ServerDetailFragment
@@ -21,12 +18,16 @@ import vtys.group.serverhealth.data.CityDataModel
 import vtys.group.serverhealth.data.HospitalDataModel
 import vtys.group.serverhealth.data.ServerAdapter
 import vtys.group.serverhealth.data.ServerDataModel
+import vtys.group.serverhealth.service.RetrofitService
 
 class Home : Fragment(), ServerAdapter.OnItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ServerAdapter
-    val ApiSample = "https://serverhealth.azurewebsites.net/api/servers/getall"
+    private val retrofitService = RetrofitService()
+    private val retrofit = retrofitService.getRetrofit()
+
+    private val getAllApi = retrofit.baseUrl().toString() + "api/servers/getall"
 
 
     override fun onCreateView(
@@ -39,7 +40,7 @@ class Home : Fragment(), ServerAdapter.OnItemClickListener {
 
 
         recyclerView = view.findViewById(R.id.recyclerView)
-        adapter = ServerAdapter(emptyList(),this)
+        adapter = ServerAdapter(emptyList(), this)
 
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
@@ -92,11 +93,10 @@ class Home : Fragment(), ServerAdapter.OnItemClickListener {
     }
 
 
-
-
     private fun fetchDataFromApi() {
-        val reqQueue: RequestQueue = Volley.newRequestQueue(requireContext())  // Assuming you are inside a Fragment, use requireContext() instead of this
-        val requestJson = JsonArrayRequest(Request.Method.GET, ApiSample, null, { jsonArray ->
+        val reqQueue: RequestQueue =
+            Volley.newRequestQueue(requireContext())  // Assuming you are inside a Fragment, use requireContext() instead of this
+        val requestJson = JsonArrayRequest(Request.Method.GET, getAllApi, null, { jsonArray ->
             Log.d("Volley Example", jsonArray.toString())
 
             val serverList = ArrayList<ServerDataModel>()
