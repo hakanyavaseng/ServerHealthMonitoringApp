@@ -46,6 +46,9 @@ class InterruptsAdapter(private var interruptsList: List<InterruptDataModel>) :
         return interruptsList.size
     }
 
+    fun getInterruptsList(): List<InterruptDataModel> {
+        return interruptsList
+    }
     // Use this method to update the dataset
     fun setData(newInterruptsList: List<InterruptDataModel>) {
         interruptsList = newInterruptsList

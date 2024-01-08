@@ -5,6 +5,7 @@ import vtys.group.serverhealth.data.ServerDataModel
 
 // Import ServerDataModel if it's in a different package
 data class HealthDataModel(
+    @SerializedName("dataid")
     val dataId: Int,
     @SerializedName("datadatetime")
     val dataDateTime: String,

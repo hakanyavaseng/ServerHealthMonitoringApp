@@ -1,7 +1,9 @@
 package vtys.group.serverhealth
 
 
+import android.content.Context
 import android.os.Bundle
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,16 +11,22 @@ import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import org.apache.poi.ss.usermodel.WorkbookFactory
 import vtys.group.serverhealth.adapter.DailyReportAdapter
 import vtys.group.serverhealth.adapter.HealthDataRecyclerAdapter
 import vtys.group.serverhealth.adapter.InterruptsAdapter
 import vtys.group.serverhealth.adapter.MonthlyReportAdapter
+import vtys.group.serverhealth.model.HealthDataModel
 import vtys.group.serverhealth.viewmodel.ServerDetailViewModel
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 
 class ServerDetailFragment : Fragment() {
     private lateinit var viewModel: ServerDetailViewModel
@@ -69,6 +77,7 @@ class ServerDetailFragment : Fragment() {
         val btnHealth = view.findViewById<Button>(R.id.btnHealth)
         val btnInterrupt = view.findViewById<Button>(R.id.btnInterrupt)
         val btnReport = view.findViewById<Button>(R.id.btnReport)
+        val btnExport = view.findViewById<Button>(R.id.btnExport)
 
         btnHealth.setOnClickListener{
             if(radioWeek.isChecked){
@@ -138,6 +147,13 @@ class ServerDetailFragment : Fragment() {
             else {
                 //TODO DO NOTHING
             }
+        }
+
+        btnExport.setOnClickListener{
+            if(recyclerViewDetail.adapter == serverDetailAdapter)
+                exportHealthDataToXls(requireContext(), recyclerViewDetail)
+            else if(recyclerViewDetail.adapter == interruptsAdapter)
+                exportInterruptsToXls()
         }
 
 
@@ -251,5 +267,117 @@ class ServerDetailFragment : Fragment() {
                 recyclerViewDetail.visibility = if (it) View.GONE else View.VISIBLE
             }
         })
+    }
+
+    private fun exportInterruptsToXls() {
+        val interruptsAdapter = recyclerViewDetail.adapter as? InterruptsAdapter
+        val interruptsDataList = interruptsAdapter?.getInterruptsList()
+
+        if (interruptsDataList != null && interruptsDataList.isNotEmpty()) {
+            val workbook = WorkbookFactory.create(true)
+            val sheet = workbook.createSheet("InterruptData")
+
+            // Add headers
+            val headerRow = sheet.createRow(0)
+            headerRow.createCell(0).setCellValue("Interrupt ID")
+            headerRow.createCell(1).setCellValue("Date")
+            headerRow.createCell(2).setCellValue("Time")
+            headerRow.createCell(3).setCellValue("Status")
+            headerRow.createCell(4).setCellValue("Server Name")
+
+            // Add data
+            for ((index, interrupt) in interruptsDataList.withIndex()) {
+                val row = sheet.createRow(index + 1)
+                row.createCell(0).setCellValue(interrupt.interruptid.toDouble())
+                row.createCell(1).setCellValue(interrupt.interruptdate ?: "N/A")
+                row.createCell(2).setCellValue(interrupt.interrupttime ?: "N/A")
+                row.createCell(3).setCellValue(interrupt.interruptstatus)
+                row.createCell(4).setCellValue(interrupt.serverid.servername ?: "N/A")
+            }
+
+            // Save the workbook to a file
+            val xlsFileName = "InterruptData_${System.currentTimeMillis()}.xls"
+            val xlsFilePath = File(
+                requireContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
+                xlsFileName
+            ).absolutePath
+
+            try {
+                val fileOut = FileOutputStream(xlsFilePath)
+                workbook.write(fileOut)
+                fileOut.close()
+                showToast("Data exported to $xlsFilePath")
+            } catch (e: IOException) {
+                e.printStackTrace()
+                showToast("Error exporting data")
+            }
+        } else {
+            showToast("No data to export")
+        }
+    }
+
+    private fun exportHealthDataToXls(context: Context, recyclerViewDetail: RecyclerView) {
+        val healthDataAdapter = recyclerViewDetail.adapter as? HealthDataRecyclerAdapter
+        val healthDataList = healthDataAdapter?.getHealthdataList()
+
+        if (healthDataList != null && healthDataList.isNotEmpty()) {
+            val workbook = WorkbookFactory.create(true)
+            val sheet = workbook.createSheet("HealthData")
+
+            // Add headers
+            val headerRow = sheet.createRow(0)
+            headerRow.createCell(0).setCellValue("Health ID")
+            headerRow.createCell(1).setCellValue("Date")
+            headerRow.createCell(2).setCellValue("CPU Usage")
+            headerRow.createCell(3).setCellValue("RAM Usage")
+            headerRow.createCell(4).setCellValue("Storage Usage")
+            headerRow.createCell(5).setCellValue("Server Temp")
+            headerRow.createCell(6).setCellValue("Ambient Temp")
+            headerRow.createCell(7).setCellValue("Energy Usage")
+            headerRow.createCell(8).setCellValue("Heartbeat")
+            headerRow.createCell(9).setCellValue("Server Name")
+
+            // Add data
+            for ((index, healthData) in healthDataList.withIndex()) {
+                val row = sheet.createRow(index + 1)
+                row.createCell(0).setCellValue(healthData.dataId.toDouble())
+                row.createCell(1).setCellValue(healthData.dataDateTime ?: "N/A")
+                row.createCell(2).setCellValue(healthData.dataCpuUsage.toDouble())
+                row.createCell(3).setCellValue(healthData.dataRamUsage.toDouble())
+                row.createCell(4).setCellValue(healthData.dataStorageUsage.toDouble())
+                row.createCell(5).setCellValue(healthData.dataServerTemp.toDouble())
+                row.createCell(6).setCellValue(healthData.dataAmbientTemp.toDouble())
+                row.createCell(7).setCellValue(healthData.dataEnergyUsage.toDouble())
+                row.createCell(8).setCellValue(if (healthData.dataHeartBeat) 1.0 else 0.0)
+                row.createCell(9).setCellValue(healthData.serverId.servername ?: "N/A")
+            }
+
+            // Save the workbook to a file
+            val xlsFileName = "HealthData_${System.currentTimeMillis()}.xls"
+            val xlsFilePath = File(
+                context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
+                xlsFileName
+            ).absolutePath
+
+            try {
+                val fileOut = FileOutputStream(xlsFilePath)
+                workbook.write(fileOut)
+                fileOut.close()
+                showToast(context, "Data exported to $xlsFilePath")
+            } catch (e: IOException) {
+                e.printStackTrace()
+                showToast(context, "Error exporting data")
+            }
+        } else {
+            showToast(context, "No data to export")
+        }
+    }
+
+    private fun showToast(context: Context, message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }

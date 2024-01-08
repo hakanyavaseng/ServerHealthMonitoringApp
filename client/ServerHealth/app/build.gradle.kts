@@ -79,6 +79,10 @@ dependencies {
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
+    //Apache POI
+    implementation ("org.apache.poi:poi:5.2.0")
+    implementation ("org.apache.poi:poi-ooxml:5.2.0")
+
 
 
 

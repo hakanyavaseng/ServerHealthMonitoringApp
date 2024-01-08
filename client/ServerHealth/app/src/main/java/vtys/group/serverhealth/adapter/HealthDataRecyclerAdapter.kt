@@ -50,4 +50,8 @@ class HealthDataRecyclerAdapter(private var healthDataList: List<HealthDataModel
         healthDataList = newHealthDataList
         notifyDataSetChanged()
     }
+
+    fun getHealthdataList(): List<HealthDataModel> {
+        return healthDataList
+    }
 }
