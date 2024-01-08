@@ -12,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import vtys.group.serverhealth.auth.LoginService
-import vtys.group.serverhealth.auth.VerificationData
-import vtys.group.serverhealth.service.RetrofitService
+import vtys.group.serverhealth.service.impl.LoginService
+import vtys.group.serverhealth.service.impl.VerificationData
+import vtys.group.serverhealth.service.impl.RetrofitService
 
 class ValidationActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")

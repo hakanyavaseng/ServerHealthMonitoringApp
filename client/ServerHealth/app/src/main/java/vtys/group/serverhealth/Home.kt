@@ -14,11 +14,11 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 import vtys.group.serverhealth.R
 import vtys.group.serverhealth.ServerDetailFragment
-import vtys.group.serverhealth.data.CityDataModel
-import vtys.group.serverhealth.data.HospitalDataModel
-import vtys.group.serverhealth.data.ServerAdapter
-import vtys.group.serverhealth.data.ServerDataModel
-import vtys.group.serverhealth.service.RetrofitService
+import vtys.group.serverhealth.model.CityDataModel
+import vtys.group.serverhealth.model.HospitalDataModel
+import vtys.group.serverhealth.adapter.ServerAdapter
+import vtys.group.serverhealth.model.ServerDataModel
+import vtys.group.serverhealth.service.impl.RetrofitService
 
 class Home : Fragment(), ServerAdapter.OnItemClickListener {
 

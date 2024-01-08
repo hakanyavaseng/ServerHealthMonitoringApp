@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import vtys.group.serverhealth.auth.LoginService
-import vtys.group.serverhealth.auth.RegistrationData
-import vtys.group.serverhealth.service.RetrofitService
+import vtys.group.serverhealth.service.impl.LoginService
+import vtys.group.serverhealth.service.impl.RegistrationData
+import vtys.group.serverhealth.service.impl.RetrofitService
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

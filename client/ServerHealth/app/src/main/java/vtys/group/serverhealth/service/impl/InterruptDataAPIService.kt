@@ -1,8 +1,9 @@
-package vtys.group.serverhealth.service
+package vtys.group.serverhealth.service.impl
 
 import vtys.group.serverhealth.adapter.DailyReportDataModel
 import vtys.group.serverhealth.adapter.MonthlyReportDataModel
-import vtys.group.serverhealth.data.InterruptDataModel
+import vtys.group.serverhealth.model.InterruptDataModel
+import vtys.group.serverhealth.service.InterruptDataAPI
 
 class InterruptDataAPIService {
 

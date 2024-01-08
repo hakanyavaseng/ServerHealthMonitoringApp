@@ -1,4 +1,4 @@
-package vtys.group.serverhealth.data
+package vtys.group.serverhealth.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vtys.group.serverhealth.R
+import vtys.group.serverhealth.model.ServerDataModel
 
 class ServerAdapter(
     private var serverList: List<ServerDataModel>,

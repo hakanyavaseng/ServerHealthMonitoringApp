@@ -1,4 +1,4 @@
-package vtys.group.serverhealth.auth
+package vtys.group.serverhealth.service.impl
 
 import retrofit2.Call
 import retrofit2.http.Body

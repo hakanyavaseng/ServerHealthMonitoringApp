@@ -1,10 +1,11 @@
-package vtys.group.serverhealth.data
+package vtys.group.serverhealth.adapter
 
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import vtys.group.serverhealth.model.HospitalDataModel
 
 class HospitalAdapter(
     context: Context,

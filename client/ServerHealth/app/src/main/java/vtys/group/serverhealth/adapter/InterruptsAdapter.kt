@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vtys.group.serverhealth.R
-import vtys.group.serverhealth.data.InterruptDataModel
+import vtys.group.serverhealth.model.InterruptDataModel
 
 class InterruptsAdapter(private var interruptsList: List<InterruptDataModel>) :
     RecyclerView.Adapter<InterruptsAdapter.InterruptsViewHolder>() {

@@ -1,6 +1,7 @@
-package vtys.group.serverhealth.service
+package vtys.group.serverhealth.service.impl
 
 import vtys.group.serverhealth.model.HealthDataModel
+import vtys.group.serverhealth.service.HealthDataAPI
 
 class HealthDataAPIService {
 

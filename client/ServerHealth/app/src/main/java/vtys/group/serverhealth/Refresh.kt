@@ -18,13 +18,13 @@ import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Response
 import vtys.group.serverhealth.R
-import vtys.group.serverhealth.create.CreateService
-import vtys.group.serverhealth.data.CityAdapter
-import vtys.group.serverhealth.data.CityDataModel
-import vtys.group.serverhealth.data.HospitalAdapter
-import vtys.group.serverhealth.data.HospitalDataModel
-import vtys.group.serverhealth.data.ServerDataModelWithIntHospitalId
-import vtys.group.serverhealth.service.RetrofitService
+import vtys.group.serverhealth.service.impl.CreateService
+import vtys.group.serverhealth.adapter.CityAdapter
+import vtys.group.serverhealth.model.CityDataModel
+import vtys.group.serverhealth.adapter.HospitalAdapter
+import vtys.group.serverhealth.model.HospitalDataModel
+import vtys.group.serverhealth.model.ServerDataModelWithIntHospitalId
+import vtys.group.serverhealth.service.impl.RetrofitService
 
 
 class Refresh : Fragment() {

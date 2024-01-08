@@ -1,12 +1,12 @@
-package vtys.group.serverhealth.create
+package vtys.group.serverhealth.service.impl
 
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
-import vtys.group.serverhealth.data.CityDataModel
-import vtys.group.serverhealth.data.HospitalDataModel
-import vtys.group.serverhealth.data.ServerDataModelWithIntHospitalId
+import vtys.group.serverhealth.model.CityDataModel
+import vtys.group.serverhealth.model.HospitalDataModel
+import vtys.group.serverhealth.model.ServerDataModelWithIntHospitalId
 
 interface CreateService {
 

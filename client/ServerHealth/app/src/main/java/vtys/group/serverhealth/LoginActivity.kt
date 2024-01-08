@@ -19,10 +19,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import vtys.group.serverhealth.auth.GoogleUser
-import vtys.group.serverhealth.auth.LoginData
-import vtys.group.serverhealth.auth.LoginService
-import vtys.group.serverhealth.service.RetrofitService
+import vtys.group.serverhealth.service.impl.GoogleUser
+import vtys.group.serverhealth.service.impl.LoginData
+import vtys.group.serverhealth.service.impl.LoginService
+import vtys.group.serverhealth.service.impl.RetrofitService
 
 class LoginActivity : AppCompatActivity() {
 

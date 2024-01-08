@@ -1,7 +1,6 @@
 package vtys.group.serverhealth.model
 
 import com.google.gson.annotations.SerializedName
-import vtys.group.serverhealth.data.ServerDataModel
 
 // Import ServerDataModel if it's in a different package
 data class HealthDataModel(

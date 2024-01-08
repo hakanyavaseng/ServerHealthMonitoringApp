@@ -1,4 +1,4 @@
-package vtys.group.serverhealth.data
+package vtys.group.serverhealth.model
 
 data class ServerDataModel(
     val serverid: Int,

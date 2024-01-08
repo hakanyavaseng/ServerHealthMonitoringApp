@@ -8,10 +8,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import vtys.group.serverhealth.adapter.DailyReportDataModel
 import vtys.group.serverhealth.adapter.MonthlyReportDataModel
-import vtys.group.serverhealth.data.InterruptDataModel
+import vtys.group.serverhealth.model.InterruptDataModel
 import vtys.group.serverhealth.model.HealthDataModel
-import vtys.group.serverhealth.service.HealthDataAPIService
-import vtys.group.serverhealth.service.InterruptDataAPIService
+import vtys.group.serverhealth.service.impl.HealthDataAPIService
+import vtys.group.serverhealth.service.impl.InterruptDataAPIService
 
 private val Any.isSuccessful: Boolean
     get() {
