@@ -29,7 +29,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import vtys.group.serverhealth.auth.GoogleToken
+import vtys.group.serverhealth.auth.GoogleUser
 import vtys.group.serverhealth.auth.LoginData
 import vtys.group.serverhealth.auth.LoginService
 
@@ -62,7 +62,9 @@ class LoginActivity : AppCompatActivity() {
         gsc = GoogleSignIn.getClient(this, gso)
 
         val account : GoogleSignInAccount?= GoogleSignIn.getLastSignedInAccount(this)
+
         if(account != null){
+            intentLogin.putExtra("ID_TOKEN", account.idToken)
             startActivity(intentLogin)
             finish()
         }
@@ -170,40 +172,42 @@ class LoginActivity : AppCompatActivity() {
 
     private fun goToHome(account: GoogleSignInAccount){
 
-        val idToken = account.idToken
-
-        sendTokenToApi(idToken)
+        val email = account.email
+        sendUserToApi(email)
 
         val intentHome = Intent(this, HomeActivity::class.java)
         startActivity(intentHome)
         finish()
     }
 
-    private fun sendTokenToApi(idToken: String?) {
-        if (idToken != null) {
-            // You can now include this token in your API request
+    private fun sendUserToApi(email : String?) {
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://your-api-url.com")
+                .baseUrl("http://10.0.0.2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
             val loginService = retrofit.create(LoginService::class.java)
 
-            val googleToken = GoogleToken(idToken)
-            val call: Call<Void> = loginService.googleLogin(googleToken)
+            val GoogleUser = GoogleUser(
+               email = email.toString()
+            )
+
+            val call: Call<Void> = loginService.googleLogin(GoogleUser)
 
             call.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful) {
-                        // Successful API call
-                        // You can handle success as needed
+
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Google Login successful.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
                     } else {
-                        // API call failed
-                        // Handle failure as needed
-                        println("API call failed: ${response.message()}")
-                        response.errorBody()?.string()?.let {
-                            println(it)
-                        }
+
+                        Log.d(TAG, "onResponse: ${response.message()}")
+
                     }
                 }
 
@@ -213,10 +217,7 @@ class LoginActivity : AppCompatActivity() {
                     t.printStackTrace()
                 }
             })
-        } else {
-            // Handle the case where idToken is null
-            println("Google Sign-In token is null")
-        }
+
     }
 
 

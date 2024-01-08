@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color">
-
 
     <Button
         android:id="@+id/add_server_button"
@@ -25,7 +25,7 @@
         android:layout_marginEnd="16dp"
         android:text="Add Hospital" />
 
-    <!-- İlk FrameLayout -->
+    <!-- First FrameLayout -->
     <FrameLayout
         android:id="@+id/first_frame_layout"
         android:layout_width="match_parent"
@@ -33,20 +33,20 @@
         android:layout_below="@id/add_server_button"
         android:visibility="gone">
 
-        <!-- İlk FrameLayout için 4 EditText -->
+        <!-- First FrameLayout for 4 TextInputEditText -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextServerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Server Name:" />
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextServerIP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                 </RadioGroup>
             </LinearLayout>
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextServerRAM"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,24 +103,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Srrver Storage:Type"
+                    android:text="Server Storage:Type"
                     android:layout_gravity="center_vertical" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupServerStorageType"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <!-- RadioButton Windows -->
+                    <!-- RadioButton SSD -->
                     <RadioButton
                         android:id="@+id/radioButtonSSD"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="SSD" />
 
-                    <!-- RadioButton Linux -->
+                    <!-- RadioButton HDD -->
                     <RadioButton
                         android:id="@+id/radioButtonHDD"
                         android:layout_width="wrap_content"
@@ -129,7 +128,7 @@
                 </RadioGroup>
             </LinearLayout>
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextServerStorageCapacity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -149,11 +148,10 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"/>
 
-
         </LinearLayout>
     </FrameLayout>
 
-    <!-- İkinci FrameLayout -->
+    <!-- Second FrameLayout -->
     <FrameLayout
         android:id="@+id/second_frame_layout"
         android:layout_width="match_parent"
@@ -161,14 +159,14 @@
         android:layout_below="@id/add_server_button"
         android:visibility="gone">
 
-        <!-- İkinci FrameLayout için 2 EditText ve 1 TextView -->
+        <!-- Second FrameLayout for 2 TextInputEditText and 1 TextView -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextHospitalName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

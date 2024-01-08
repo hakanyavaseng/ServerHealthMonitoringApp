@@ -15,7 +15,7 @@ interface LoginService{
     fun loginUser(@Body loginData: LoginData): Call<Void>
 
     @POST("/api/auth/googlelogin")
-    fun googleLogin(@Body googleToken : GoogleToken): Call<Void>
+    fun googleLogin(@Body googleUser : GoogleUser): Call<Void>
 
 }
 
@@ -34,6 +34,6 @@ data class LoginData(
     val username: String,
     val password: String
 )
-data class GoogleToken(
-    val idToken: String
+data class GoogleUser(
+    val email: String
 )

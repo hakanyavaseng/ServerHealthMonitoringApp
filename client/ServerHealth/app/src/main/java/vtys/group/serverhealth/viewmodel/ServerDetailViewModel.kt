@@ -10,6 +10,8 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import vtys.group.serverhealth.adapter.DailyReportDataModel
+import vtys.group.serverhealth.adapter.MonthlyReportDataModel
 import vtys.group.serverhealth.data.InterruptDataModel
 import vtys.group.serverhealth.model.HealthDataModel
 import vtys.group.serverhealth.service.HealthDataAPI
@@ -30,6 +32,16 @@ class ServerDetailViewModel : ViewModel() {
     val interruptData = MutableLiveData<ArrayList<InterruptDataModel>>()
     val interruptDataError = MutableLiveData<Boolean>()
     val interruptDataLoading = MutableLiveData<Boolean>()
+
+    val monthlyReportData = MutableLiveData<ArrayList<MonthlyReportDataModel>>()
+    val monthlyReportError = MutableLiveData<Boolean>()
+    val monthlyReportLoading = MutableLiveData<Boolean>()
+
+    val dailyReportData = MutableLiveData<ArrayList<DailyReportDataModel>>()
+    val dailyReportError = MutableLiveData<Boolean>()
+    val dailyReportLoading = MutableLiveData<Boolean>()
+
+
 
     private val healthDataAPIService = HealthDataAPIService()
     private val interruptDataAPIService = InterruptDataAPIService()
@@ -180,6 +192,57 @@ class ServerDetailViewModel : ViewModel() {
             }
         })
     }
+
+    fun refreshMonthlyReport(serverId: Int) {
+        monthlyReportLoading.value = true
+        interruptDataAPIService.interruptDataMonthlyReport(serverId).enqueue(object : Callback<ArrayList<MonthlyReportDataModel>> {
+            override fun onResponse(
+                call: Call<ArrayList<MonthlyReportDataModel>>,
+                response: Response<ArrayList<MonthlyReportDataModel>>
+            ) {
+                if (response.isSuccessful) {
+                    monthlyReportData.value = response.body()
+                    monthlyReportError.value = false
+                    monthlyReportLoading.value = false
+                } else {
+                    monthlyReportError.value = true
+                    monthlyReportLoading.value = false
+                }
+            }
+
+            override fun onFailure(call: Call<ArrayList<MonthlyReportDataModel>>, t: Throwable) {
+                Log.e("ServerDetailViewModel", t.message.toString())
+                monthlyReportError.value = true
+                monthlyReportLoading.value = false
+            }
+        })
+    }
+
+    fun refreshDailyReport(serverId: Int) {
+        dailyReportLoading.value = true
+        interruptDataAPIService.interruptDataDailyReport(serverId).enqueue(object : Callback<ArrayList<DailyReportDataModel>> {
+            override fun onResponse(
+                call: Call<ArrayList<DailyReportDataModel>>,
+                response: Response<ArrayList<DailyReportDataModel>>
+            ) {
+                if (response.isSuccessful) {
+                    dailyReportData.value = response.body()
+                    dailyReportError.value = false
+                    dailyReportLoading.value = false
+                } else {
+                    dailyReportError.value = true
+                    dailyReportLoading.value = false
+                }
+            }
+
+            override fun onFailure(call: Call<ArrayList<DailyReportDataModel>>, t: Throwable) {
+                Log.e("ServerDetailViewModel", t.message.toString())
+                dailyReportError.value = true
+                dailyReportLoading.value = false
+            }
+        })
+    }
+
 
 }
 

@@ -17,9 +17,10 @@
         <item name="android:textColor">@color/textSecondaryColor</item>
     </style>
 
+    <style name="Theme.ServerHealth" parent="Base.Theme.ServerHealth">
+      <item name="colorPrimary">@color/brandPrimaryColor</item>
+      <item name="colorPrimaryDark">#F1ECE7</item>
+        <item name="android:navigationBarColor">@color/bg_color</item>
+   </style>
 
-
-
-
-    <style name="Theme.ServerHealth" parent="Base.Theme.ServerHealth" />
 </resources>

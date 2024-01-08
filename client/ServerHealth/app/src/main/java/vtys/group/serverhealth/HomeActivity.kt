@@ -31,8 +31,13 @@ class HomeActivity : AppCompatActivity() {
 
         val account: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
 
+
+
+
         // Initialize the GoogleSignInClient
         googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
