@@ -29,14 +29,14 @@ class InterruptsAdapter(private var interruptsList: List<InterruptDataModel>) :
     override fun onBindViewHolder(holder: InterruptsViewHolder, position: Int) {
 
         val interrupt = interruptsList[position]
-        holder.interruptIdTextView.text = interrupt.interruptid.toString()
+        holder.interruptIdTextView.text ="Interrupt ID: "+ interrupt.interruptid.toString()
 
         // Check for null before setting text
-        holder.interruptDateTextView.text = interrupt.interruptdate ?: "N/A"
-        holder.interruptTimeTextView.text = interrupt.interrupttime ?: "N/A"
+        holder.interruptDateTextView.text = "Interrupt Date: "+interrupt.interruptdate ?: "N/A"
+        holder.interruptTimeTextView.text = "Interrupt Time: "+interrupt.interrupttime ?: "N/A"
 
-        holder.interruptStatusTextView.text = interrupt.interruptstatus.toString()
-        holder.serverIdTextView.text = interrupt.serverid.servername ?: "N/A"
+        holder.interruptStatusTextView.text = "Interrupt Status: "+interrupt.interruptstatus.toString()
+        holder.serverIdTextView.text = "Server Name: "+interrupt.serverid.servername ?: "N/A"
 
         // Log the values
         Log.d(

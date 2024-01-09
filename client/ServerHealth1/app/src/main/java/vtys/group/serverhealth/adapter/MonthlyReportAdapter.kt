@@ -28,7 +28,7 @@ class MonthlyReportAdapter(private var monthlyReportList: List<MonthlyReportData
     override fun onBindViewHolder(holder: MonthlyReportViewHolder, position: Int) {
         val report = monthlyReportList[position]
         holder.monthName.text = report.month
-        holder.interruptCountMonthly.text = report.interruptCount.toString()
+        holder.interruptCountMonthly.text = "Interrupt Count: "+report.interruptCount.toString()
 
         Log.d(
             "MonthlyReportAdapter",

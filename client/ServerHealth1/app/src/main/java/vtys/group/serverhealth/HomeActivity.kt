@@ -1,12 +1,9 @@
 package vtys.group.serverhealth
 
 import Home
-import Refresh
+import Add
 import android.os.Bundle
-import android.view.View
-import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -45,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.navigation_home -> replaceFragment(Home())
                 R.id.navigation_favourite -> replaceFragment(Favourites())
-                R.id.navigation_refresh -> replaceFragment(Refresh())
+                R.id.navigation_refresh -> replaceFragment(Add())
                 R.id.navigation_notification -> replaceFragment(Notifications())
                 R.id.navigation_profile -> replaceFragment(Profile())
                 else -> {

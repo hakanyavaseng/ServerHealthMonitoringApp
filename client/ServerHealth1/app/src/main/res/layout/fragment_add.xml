@@ -10,7 +10,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/bg_color">
 
     <LinearLayout
@@ -31,7 +31,7 @@
                 android:layout_columnWeight="1"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="5dp"
-                android:text="Add Server"
+                android:text="@string/add_server"
                 app:rippleColor="@color/brandSecondaryColor" />
 
             <Button
@@ -39,7 +39,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_columnWeight="1"
-                android:text="Add Hospital"
+                android:text="@string/add_hospital"
                 app:rippleColor="@color/brandSecondaryColor" />
 
             <Button
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="5dp"
-                android:text="Import Server"
+                android:text="@string/import_server"
                 app:rippleColor="@color/brandSecondaryColor"/>
 
             <Button
@@ -56,7 +56,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="Import Hospital"
+                android:text="@string/import_hospital"
                 app:rippleColor="@color/brandSecondaryColor"/>
 
         </GridLayout>
@@ -87,11 +87,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextServerName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Server Name:" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextServerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Server Name:"
+                    android:textColor="@color/textPrimaryColor"
+                    android:textColorHint="@color/textSecondaryColor"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <LinearLayout
@@ -103,13 +106,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextServerIP"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Server IP:"
-                android:paddingBottom="10dp">
-            </com.google.android.material.textfield.TextInputEditText>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextServerIP"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/server_ip"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/textPrimaryColor"
+                    android:textColorHint="@color/textSecondaryColor"/>
+
+
             </LinearLayout>
 
 
@@ -127,12 +133,12 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:textSize="20sp"
-                    android:paddingStart="5dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="ServerOS:"
-                    />
+                    android:paddingStart="5dp"
+                    android:text="@string/serveros"
+                    android:textColor="@color/textPrimaryColor"
+                    android:textSize="20sp" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupServerOS"
@@ -146,15 +152,17 @@
                         android:id="@+id/radioButtonWindows"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Windows"
-                        android:layout_marginEnd="5dp"/>
+                        android:layout_marginEnd="5dp"
+                        android:text="@string/windows"
+                        android:textColor="@color/textPrimaryColor" />
 
                     <!-- RadioButton Linux -->
                     <RadioButton
                         android:id="@+id/radioButtonLinux"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linux" />
+                        android:text="@string/linux"
+                        android:textColor="@color/textPrimaryColor" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -167,12 +175,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextServerRAM"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Server RAM:" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextServerRAM"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/server_ram"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/textPrimaryColor"
+                    android:textColorHint="@color/textSecondaryColor" />
         </LinearLayout>
 
             <LinearLayout
@@ -189,12 +199,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textSize="20sp"
                     android:paddingStart="5dp"
-                    android:text="Server Storage:Type" />
+                    android:text="@string/server_storage_type"
+                    android:textColor="@color/textPrimaryColor"
+                    android:textSize="20sp" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupServerStorageType"
+                    android:outlineAmbientShadowColor="@color/textPrimaryColor"
+                    android:outlineSpotShadowColor="@color/brandPrimaryColor"
                     android:layout_width="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_height="wrap_content"
@@ -205,14 +218,16 @@
                         android:id="@+id/radioButtonSSD"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="SSD" />
+                        android:text="@string/ssd"
+                        android:textColor="@color/textPrimaryColor" />
 
                     <!-- RadioButton HDD -->
                     <RadioButton
                         android:id="@+id/radioButtonHDD"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="HDD" />
+                        android:text="@string/hdd"
+                        android:textColor="@color/textPrimaryColor" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -225,12 +240,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextServerStorageCapacity"
-                android:layout_width="match_parent"
-                android:inputType="numberDecimal"
-                android:layout_height="match_parent"
-                android:hint="Server Storage Capacity" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextServerStorageCapacity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/server_storage_capacity"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/textPrimaryColor"
+                    android:textColorHint="@color/textSecondaryColor" />
         </LinearLayout>
 
             <LinearLayout
@@ -253,7 +270,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="Server Save"
+                android:text="@string/server_save"
                 app:rippleColor="@color/brandSecondaryColor" />
 
         </LinearLayout>
@@ -286,11 +303,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextHospitalName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Hospital Name" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextHospitalName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/hospital_name"
+                    android:textColor="@color/textPrimaryColor"
+                    android:textColorHint="@color/textSecondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -314,7 +333,7 @@
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="Hospital Save"
+                android:text="@string/hospital_save"
                 app:rippleColor="@color/brandSecondaryColor" />
 
         </LinearLayout>

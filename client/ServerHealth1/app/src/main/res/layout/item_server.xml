@@ -1,5 +1,6 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
@@ -28,7 +29,8 @@
             android:layout_below="@id/serverNameTextView"
             android:layout_marginBottom="8dp"
             android:text="Server IP"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            tools:ignore="HardcodedText" />
 
         <!-- Hospital and City Information -->
         <LinearLayout
@@ -47,7 +49,8 @@
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
                 android:text="Hospital Name"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                tools:ignore="HardcodedText" />
 
             <!-- City TextView -->
             <TextView
@@ -56,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:text="City"
+                android:text="@string/city"
                 android:textSize="14sp" />
         </LinearLayout>
 

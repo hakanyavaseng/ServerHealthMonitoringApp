@@ -13,6 +13,7 @@
     <item
         android:id="@+id/navigation_refresh"
         android:icon="@drawable/plus"
+        android:iconTint="#E10404"
         android:title="@string/add" />
     <!-- Diğer öğeleri ekleyin -->
     <item

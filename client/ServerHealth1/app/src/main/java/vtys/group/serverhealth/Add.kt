@@ -1,5 +1,3 @@
-import android.app.Activity
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -33,7 +31,7 @@ import vtys.group.serverhealth.model.ServerDataModelWithIntHospitalId
 import vtys.group.serverhealth.service.impl.RetrofitService
 
 
-class Refresh : Fragment() {
+class Add : Fragment() {
     private lateinit var createService: CreateService
     private lateinit var firstFrameLayout: FrameLayout
     private lateinit var secondFrameLayout: FrameLayout
@@ -65,7 +63,7 @@ class Refresh : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_refresh, container, false)
+        val view = inflater.inflate(R.layout.fragment_add, container, false)
         val retrofitService = RetrofitService()
 
         firstFrameLayout = view.findViewById(R.id.first_frame_layout)

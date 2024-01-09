@@ -34,13 +34,13 @@ class HealthDataRecyclerAdapter(private var healthDataList: List<HealthDataModel
 
         val healthData = healthDataList[position]
         holder.dataDateTimeTextView.text = healthData.dataDateTime.toString()
-        holder.heartbeatStatusTextView.text = healthData.dataHeartBeat.toString()
-        holder.cpuUsageTextView.text = healthData.dataCpuUsage.toString()
-        holder.temperatureStatusTextView.text = healthData.dataServerTemp.toString()
-        holder.ambientTemperatureStatusTextView.text = healthData.dataAmbientTemp.toString()
-        holder.ramUsageTextView.text = healthData.dataRamUsage.toString()
-        holder.storageUsageTextView.text = healthData.dataStorageUsage.toString()
-        holder.energyUsageTextView.text = healthData.dataEnergyUsage.toString()
+        holder.heartbeatStatusTextView.text = "HB: "  + healthData.dataHeartBeat.toString()
+        holder.cpuUsageTextView.text = "CPU Usage: " + healthData.dataCpuUsage.toString()
+        holder.temperatureStatusTextView.text = "CPU Temp: " + healthData.dataServerTemp.toString()
+        holder.ambientTemperatureStatusTextView.text = "Ambient Temp: " +healthData.dataAmbientTemp.toString()
+        holder.ramUsageTextView.text ="RAM Usage: " + healthData.dataRamUsage.toString()
+        holder.storageUsageTextView.text = "Storage Usage: " + healthData.dataStorageUsage.toString()
+        holder.energyUsageTextView.text = "Power Usage: " + healthData.dataEnergyUsage.toString()
     }
 
     override fun getItemCount(): Int {

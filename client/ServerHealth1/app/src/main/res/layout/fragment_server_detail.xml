@@ -34,7 +34,8 @@
             android:layout_height="wrap_content"
             android:text="Server RAM: "
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
 
         <TextView
@@ -43,7 +44,8 @@
             android:layout_height="wrap_content"
             android:text="Storage Capacity: "
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/serverStorageTypeTextView"
@@ -51,7 +53,8 @@
             android:layout_height="wrap_content"
             android:text="Storage Type: "
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/serverOsTextView"
@@ -59,12 +62,15 @@
             android:layout_height="wrap_content"
             android:text="Server OS: "
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="250dp"
+        app:layout_goneMarginStart="10dp"
+        android:layout_marginTop="1dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:orientation="vertical"
@@ -80,7 +86,8 @@
             android:layout_marginTop="2dp"
             android:text="Server Name: "
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/serverIpTextView"
@@ -88,14 +95,15 @@
             android:layout_height="wrap_content"
             android:text="Server IP: "
             android:textSize="18sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"
+            tools:ignore="HardcodedText" />
 
 
         <TextView
             android:id="@+id/cityNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/textview"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -103,7 +111,7 @@
             android:id="@+id/hospitalNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/textview"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -123,10 +131,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="1dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
@@ -145,21 +153,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="1 Week" />
+                android:text="@string/_1_week" />
 
             <RadioButton
                 android:id="@+id/monthlyRadio"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="1 Month" />
+                android:text="@string/_1_month" />
 
             <RadioButton
                 android:id="@+id/yearlyRadio"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="1 Year" />
+                android:text="@string/_1_year" />
         </RadioGroup>
 
     </LinearLayout>
@@ -188,8 +196,7 @@
                 android:backgroundTint="@color/brandPrimaryColor"
                 android:clickable="true"
                 android:contextClickable="true"
-                android:text="Health Data"
-                android:textSize="10sp"
+                android:text="@string/health_data"
                 app:rippleColor="@color/brandSecondaryColor"
                 android:layout_marginEnd="5dp"/>
 
@@ -201,8 +208,7 @@
                 android:backgroundTint="@color/brandPrimaryColor"
                 android:clickable="true"
                 android:contextClickable="true"
-                android:text="Interrupts"
-                android:textSize="10sp"
+                android:text="@string/interrupts"
                 app:rippleColor="@color/brandSecondaryColor" />
 
             <Button
@@ -214,8 +220,7 @@
                 android:backgroundTint="@color/brandPrimaryColor"
                 android:clickable="true"
                 android:contextClickable="true"
-                android:text="Report"
-                android:textSize="10sp"
+                android:text="@string/report"
                 app:rippleColor="@color/brandSecondaryColor" />
 
             <Button
@@ -224,8 +229,7 @@
                 android:layout_columnWeight="1"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/brandPrimaryColor"
-                android:text="Export"
-                android:textSize="10sp"
+                android:text="@string/export"
                 app:rippleColor="@color/brandSecondaryColor" />
 
         </GridLayout>

@@ -62,8 +62,7 @@ class ServerDetailFragment : Fragment() {
         view.findViewById<TextView>(R.id.serverRamTextView).text = "RAM: $serverRam"
         view.findViewById<TextView>(R.id.serverStorageTypeTextView).text =
             "$serverStorageType"
-        view.findViewById<TextView>(R.id.serverStorageCapacityTextView).text =
-            "Capacity: $serverStorageCapacity"
+        view.findViewById<TextView>(R.id.serverStorageCapacityTextView).text ="Capacity: $serverStorageCapacity"
         view.findViewById<TextView>(R.id.hospitalNameTextView).text = "$hospitalName"
         view.findViewById<TextView>(R.id.cityNameTextView).text = "$cityName"
         recyclerViewDetail = view.findViewById(R.id.recyclerViewDetail)

@@ -27,7 +27,7 @@ class DailyReportAdapter(private var dailyReportList: List<DailyReportDataModel>
     override fun onBindViewHolder(holder: DailyReportViewHolder, position: Int) {
         val report = dailyReportList[position]
         holder.dayName.text = report.day
-        holder.interruptCountDaily.text = report.interruptCount.toString()
+        holder.interruptCountDaily.text = "Interrupt Count: "+report.interruptCount.toString()
         Log.d("DailyReportAdapter", "Day: ${report.day}, Interrupt Count: ${report.interruptCount}")
 
     }
