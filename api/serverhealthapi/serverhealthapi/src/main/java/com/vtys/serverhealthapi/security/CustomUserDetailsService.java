@@ -21,12 +21,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private UserRepository userRepository;
 
- 
     @Autowired
     public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -34,14 +32,11 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("Username: " + username + " not found"));
 
         return new User(user.getUsername(), user.getUserpassword(), mapRolesToAuthorities(user.getRolesList()));
-       
+
     }
 
     private Collection<GrantedAuthority> mapRolesToAuthorities(List<Roles> roles) {
-        return  roles.stream().map(role-> new SimpleGrantedAuthority(role.getRolename())).collect(Collectors.toList());
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getRolename())).collect(Collectors.toList());
     }
 
-
-
-  
 }

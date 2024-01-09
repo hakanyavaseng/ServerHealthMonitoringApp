@@ -6,6 +6,3 @@ import lombok.Data;
 public class GoogleLoginDto {
     private String email;
 }
-
-
-

@@ -16,31 +16,25 @@ public class HealthdataServiceImpl implements HealthdataService {
 
     private final HealthdataRepository healthdataRepository;
 
-   
     @Override
     public List<Healthdata> findByServerid(Integer serverId) {
         return healthdataRepository.findByServerid(serverId);
 
     }
 
-
     @Override
     public List<Healthdata> getHealthdataInOneWeek(Integer serverid) {
         return healthdataRepository.getHealthdataInOneWeek(serverid);
     }
-
 
     @Override
     public List<Healthdata> getHealthdataInOneMonth(Integer serverid) {
         return healthdataRepository.getHealthdataInOneMonth(serverid);
     }
 
-
     @Override
     public List<Healthdata> getHealthdataInOneYear(Integer serverid) {
-       return healthdataRepository.getHealthdataInOneYear(serverid);
+        return healthdataRepository.getHealthdataInOneYear(serverid);
     }
 
-
-    
 }

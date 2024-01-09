@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface ServersRepository extends JpaRepository<Servers, Integer> {
 
-
     List<Servers> findByServernameContainingIgnoreCase(String serverName);
 
     @Query(value = "EXEC sp_GetServerByCity :cityName", nativeQuery = true)

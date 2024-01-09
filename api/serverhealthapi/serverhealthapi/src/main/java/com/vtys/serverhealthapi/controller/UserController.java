@@ -11,24 +11,21 @@ import java.util.List;
 @RequestMapping("api/users")
 public class UserController {
 
-    //Initialize UserService
+    // Initialize UserService
     private final UserService userservice;
 
     public UserController(UserService userservice) {
         this.userservice = userservice;
     }
 
-      @PostMapping("/create")
+    @PostMapping("/create")
     public ResponseEntity<UserDto> create(@RequestBody UserDto userDto) {
         return ResponseEntity.ok(userservice.createUser(userDto));
     }
-   
-   
 
     @GetMapping("/getall")
     public ResponseEntity<List<UserDto>> getAll() {
         return ResponseEntity.ok(userservice.getAllUsers());
     }
-
 
 }

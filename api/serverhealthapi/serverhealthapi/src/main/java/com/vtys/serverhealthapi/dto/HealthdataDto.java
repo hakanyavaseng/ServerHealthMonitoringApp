@@ -14,6 +14,6 @@ public class HealthdataDto {
         private Integer dataambienttemp;
         private Integer dataenergyusage;
         private boolean dataheartbeat;
-        private Integer serverid; 
-    
+        private Integer serverid;
+
 }

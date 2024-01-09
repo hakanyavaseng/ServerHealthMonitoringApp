@@ -39,5 +39,5 @@ public class HealthdataController {
     public List<Healthdata> getHealthdataInOneYear(@PathVariable Integer serverid) {
         return healthdataService.getHealthdataInOneYear(serverid);
     }
-    
+
 }

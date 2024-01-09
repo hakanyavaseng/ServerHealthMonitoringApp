@@ -7,11 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.vtys.serverhealthapi.service.EmailSenderService;
 
-
 @Service
-public class EmailSenderServiceImpl implements EmailSenderService{
+public class EmailSenderServiceImpl implements EmailSenderService {
 
-     private JavaMailSender javaMailSender;
+    private JavaMailSender javaMailSender;
 
     @Autowired
     public EmailSenderServiceImpl(JavaMailSender javaMailSender) {
@@ -20,7 +19,7 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 
     public void sendEmail(String to, String body, String topic) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        simpleMailMessage.setFrom("hakanyavaseng@gmail.com");
+        simpleMailMessage.setFrom("serverhealthlogin@gmail.com");
         simpleMailMessage.setTo(to);
         simpleMailMessage.setSubject(topic);
         simpleMailMessage.setText(body);
@@ -30,16 +29,13 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 
     public void sendVerificationEmail(String to, String verificationCode) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        simpleMailMessage.setFrom("hakanyavaseng@gmail.com");
+        simpleMailMessage.setFrom("serverhealthlogin@gmail.com");
         simpleMailMessage.setTo(to);
         simpleMailMessage.setSubject("Doğrulama Kodunuz");
         simpleMailMessage.setText("Doğrulama kodunuz: " + verificationCode);
-        
+
         javaMailSender.send(simpleMailMessage);
 
     }
-    
+
 }
-
-
-  

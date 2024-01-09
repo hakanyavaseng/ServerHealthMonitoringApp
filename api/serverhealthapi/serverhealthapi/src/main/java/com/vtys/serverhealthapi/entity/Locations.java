@@ -7,11 +7,11 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "Locations")  // Specify the table name if it's different from the entity name
+@Table(name = "Locations") // Specify the table name if it's different from the entity name
 public class Locations {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Use IDENTITY strategy for MSSQL
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Use IDENTITY strategy for MSSQL
     @Column(name = "cityid")
     private Integer cityid;
 
