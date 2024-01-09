@@ -7,11 +7,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Healthdata")  // Specify the table name if it's different from the entity name
+@Table(name = "Healthdata") // Specify the table name if it's different from the entity name
 public class Healthdata {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Use IDENTITY strategy for MSSQL
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Use IDENTITY strategy for MSSQL
     private Integer dataid;
 
     @Column(name = "datadatetime", length = 30, nullable = false)

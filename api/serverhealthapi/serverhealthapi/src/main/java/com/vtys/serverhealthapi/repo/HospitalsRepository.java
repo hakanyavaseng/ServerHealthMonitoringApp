@@ -11,4 +11,3 @@ public interface HospitalsRepository extends JpaRepository<Hospitals, Integer> {
 
     List<Hospitals> findByHospitalnameContainingIgnoreCase(String hospitalname);
 }
-

@@ -12,4 +12,3 @@ public class InterruptsReportMonthlyDto {
         this.interruptCount = interruptCount;
     }
 }
-

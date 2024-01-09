@@ -17,15 +17,12 @@ import java.util.List;
 public class HospitalServiceImpl implements HospitalService {
     private final ModelMapper modelMapper;
     private final HospitalsRepository hospitalsRepository;
-    //private final LocationsRepository locationsRepository;
+    // private final LocationsRepository locationsRepository;
 
-
-    //Create a hospital and save it to the database
+    // Create a hospital and save it to the database
     @Override
     public HospitalDto createHospital(HospitalDto hospitalDto) {
         Hospitals hospital = modelMapper.map(hospitalDto, Hospitals.class);
-
-
 
         hospitalsRepository.save(hospital);
         hospitalDto.setHospitalid(hospital.getHospitalid());
@@ -33,7 +30,7 @@ public class HospitalServiceImpl implements HospitalService {
         return hospitalDto;
     }
 
-    //Get all hospitals from the database
+    // Get all hospitals from the database
     @Override
     public List<HospitalDto> getAllHospitals() {
 
@@ -47,8 +44,7 @@ public class HospitalServiceImpl implements HospitalService {
 
     }
 
-
-    //Get a hospital by id from the database
+    // Get a hospital by id from the database
     @Override
     public HospitalDto getHospitalById(Integer id) {
 
@@ -59,7 +55,7 @@ public class HospitalServiceImpl implements HospitalService {
         return modelMapper.map(hospital, HospitalDto.class);
     }
 
-    //Get a hospital by city id from the database
+    // Get a hospital by city id from the database
     @Override
     public List<HospitalDto> getHospitalByCityId(Integer cityId) {
         List<Hospitals> hospitals = hospitalsRepository.findByCityid_Cityid(cityId);
@@ -76,8 +72,5 @@ public class HospitalServiceImpl implements HospitalService {
     public List<Hospitals> findByHospitalnameContainingIgnoreCase(String hospitalName) {
         return hospitalsRepository.findByHospitalnameContainingIgnoreCase(hospitalName);
     }
-
-
-
 
 }

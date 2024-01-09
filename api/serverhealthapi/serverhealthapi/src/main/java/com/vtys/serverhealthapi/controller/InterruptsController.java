@@ -5,28 +5,21 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.vtys.serverhealthapi.dto.InterruptsReportDailyDto;
 import com.vtys.serverhealthapi.dto.InterruptsReportMonthlyDto;
 import com.vtys.serverhealthapi.entity.Interrupts;
 import com.vtys.serverhealthapi.service.InterruptsService;
 
-import jakarta.persistence.Query;
-
 @RestController
 @RequestMapping("/api/interrupts")
 public class InterruptsController {
 
-
     private final InterruptsService interruptsService;
-    
 
     public InterruptsController(InterruptsService interruptsService) {
         this.interruptsService = interruptsService;
     }
-
 
     @GetMapping("/getall")
     public List<Interrupts> getAllInterrupts() {
@@ -63,18 +56,18 @@ public class InterruptsController {
         return interruptsService.getInterruptsReportDaily(serverid);
     }
 
-    /* @GetMapping("/getbyservername")
-    public List<Interrupts> findByServerNameNativeQuery(@RequestParam String servername) {
-        return interruptsService.findByServerNameNativeQuery(servername);
-    }
+    /*
+     * @GetMapping("/getbyservername")
+     * public List<Interrupts> findByServerNameNativeQuery(@RequestParam String
+     * servername) {
+     * return interruptsService.findByServerNameNativeQuery(servername);
+     * }
+     * 
+     * @GetMapping("/getbyhospitalname")
+     * public List<Interrupts> getInterruptsByHospitalname(@RequestParam String
+     * hospitalname) {
+     * return interruptsService.getInterruptsByHospitalname(hospitalname);
+     * }
+     */
 
-    @GetMapping("/getbyhospitalname")
-    public List<Interrupts> getInterruptsByHospitalname(@RequestParam String hospitalname) {
-        return interruptsService.getInterruptsByHospitalname(hospitalname);
-    }
-    */
-    
-
-
-    
 }

@@ -13,8 +13,4 @@ public interface LocationService {
 
     Locations getByCityid(Integer locationid);
 
-
-
-
-
 }

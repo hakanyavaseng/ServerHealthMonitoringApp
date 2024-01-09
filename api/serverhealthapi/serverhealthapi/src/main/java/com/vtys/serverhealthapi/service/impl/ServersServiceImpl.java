@@ -12,23 +12,21 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
 @RequiredArgsConstructor
 public class ServersServiceImpl implements ServersService {
 
     private final ServersRepository serversRepository;
-    private  final HospitalsRepository hospitalsRepository;
+    private final HospitalsRepository hospitalsRepository;
     private final ModelMapper modelMapper;
-
-
 
     @Override
     public List<Servers> getAllServers() {
         return serversRepository.findAll();
     }
+
     @Override
-    public List<Servers>  findByServernameContainingIgnoreCase(String servername) {
+    public List<Servers> findByServernameContainingIgnoreCase(String servername) {
         return serversRepository.findByServernameContainingIgnoreCase(servername);
     }
 
@@ -52,7 +50,8 @@ public class ServersServiceImpl implements ServersService {
                 server.setHostpitalid(hospital);
             } else {
                 // Handle the case when the hospital with the given ID is not found
-                // You may throw an exception, log a message, or handle it according to your application's logic
+                // You may throw an exception, log a message, or handle it according to your
+                // application's logic
             }
         }
 
@@ -64,12 +63,11 @@ public class ServersServiceImpl implements ServersService {
 
         return serverDto;
     }
+
     @Override
     public List<Servers> findByCitynameNativeQuery(String cityName) {
-        
-       return serversRepository.findByCitynameNativeQuery(cityName);
+
+        return serversRepository.findByCitynameNativeQuery(cityName);
     }
-
-
 
 }

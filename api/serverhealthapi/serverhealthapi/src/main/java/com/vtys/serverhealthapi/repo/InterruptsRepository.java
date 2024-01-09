@@ -13,16 +13,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-@SqlResultSetMapping(
-    name = "InterruptsReportMonthlyDtoMapping",
-    classes = @ConstructorResult(
-        targetClass = InterruptsReportMonthlyDto.class,
-        columns = {
-            @ColumnResult(name = "MONTH_", type = String.class),
-            @ColumnResult(name = "INTERRUPTCOUNT", type = Integer.class)
-        }
-    )
-)
+@SqlResultSetMapping(name = "InterruptsReportMonthlyDtoMapping", classes = @ConstructorResult(targetClass = InterruptsReportMonthlyDto.class, columns = {
+        @ColumnResult(name = "MONTH_", type = String.class),
+        @ColumnResult(name = "INTERRUPTCOUNT", type = Integer.class)
+}))
 
 public interface InterruptsRepository extends JpaRepository<Interrupts, Integer> {
 
@@ -33,11 +27,10 @@ public interface InterruptsRepository extends JpaRepository<Interrupts, Integer>
     List<Interrupts> findByServerNameNativeQuery(String servername);
 
     @Query(value = "EXEC GetInterruptsByHospitalName :hospitalname", nativeQuery = true)
-    List<Interrupts>  getInterruptsByHospitalname(String hospitalname);
+    List<Interrupts> getInterruptsByHospitalname(String hospitalname);
 
     @Query(value = "EXEC sp_GetInterruptsByServerIdAndDateRangeInOneWeek :serverid", nativeQuery = true)
     List<Interrupts> getInterruptsInOneWeek(Integer serverid);
-
 
     @Query(value = "EXEC sp_GetInterruptsByServerIdAndDateRangeInOneMonth :serverid", nativeQuery = true)
     List<Interrupts> getInterruptsInOneMonth(Integer serverid);
@@ -50,6 +43,5 @@ public interface InterruptsRepository extends JpaRepository<Interrupts, Integer>
 
     @Query(value = "EXEC sp_ReportInterruptsByDaily :serverid", nativeQuery = true)
     List<Object[]> getInterruptsReportDaily(@Param("serverid") Integer serverid);
-
 
 }

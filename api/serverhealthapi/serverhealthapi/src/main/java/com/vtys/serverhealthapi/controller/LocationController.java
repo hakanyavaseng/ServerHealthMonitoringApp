@@ -24,7 +24,6 @@ public class LocationController {
         return locationservice.getAllLocations();
     }
 
-
     @GetMapping("/getbyid/{id}")
     public Locations getById(@PathVariable Integer id) {
         return locationservice.getByCityid(id);

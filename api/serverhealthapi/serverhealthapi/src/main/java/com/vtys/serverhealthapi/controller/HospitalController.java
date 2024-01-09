@@ -14,7 +14,7 @@ import java.util.List;
 public class HospitalController {
 
     private final HospitalService hospitalService;
-    private  final HospitalsRepository hospitalsRepository;
+    private final HospitalsRepository hospitalsRepository;
 
     public HospitalController(HospitalService hospitalService, HospitalsRepository hospitalsRepository) {
         this.hospitalService = hospitalService;
@@ -45,7 +45,5 @@ public class HospitalController {
     public List<Hospitals> getByHospitalName(@RequestParam String hospitalname) {
         return hospitalsRepository.findByHospitalnameContainingIgnoreCase(hospitalname);
     }
-
-
 
 }

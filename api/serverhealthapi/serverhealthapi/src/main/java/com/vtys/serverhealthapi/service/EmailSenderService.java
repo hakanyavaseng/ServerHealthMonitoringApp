@@ -6,5 +6,4 @@ public interface EmailSenderService {
 
     public void sendVerificationEmail(String to, String verificationCode);
 
-
-} 
+}

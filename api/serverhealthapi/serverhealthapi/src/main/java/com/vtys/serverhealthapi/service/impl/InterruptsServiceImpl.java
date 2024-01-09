@@ -1,12 +1,8 @@
 package com.vtys.serverhealthapi.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Service;
-
-import com.vtys.serverhealthapi.controller.InterruptsController;
 import com.vtys.serverhealthapi.dto.InterruptsReportDailyDto;
 import com.vtys.serverhealthapi.dto.InterruptsReportMonthlyDto;
 import com.vtys.serverhealthapi.entity.Interrupts;
@@ -21,10 +17,9 @@ public class InterruptsServiceImpl implements InterruptsService {
 
     private final InterruptsRepository interruptsRepository;
 
-
     @Override
     public List<Interrupts> getAllInterrupts() {
-       return interruptsRepository.findAll();
+        return interruptsRepository.findAll();
     }
 
     @Override
@@ -35,8 +30,8 @@ public class InterruptsServiceImpl implements InterruptsService {
 
     @Override
     public List<Interrupts> getInterruptsByServerid(Integer serverid) {
-    return interruptsRepository.getInterruptsByServerid(serverid);
-      
+        return interruptsRepository.getInterruptsByServerid(serverid);
+
     }
 
     @Override
@@ -64,8 +59,6 @@ public class InterruptsServiceImpl implements InterruptsService {
         List<Object[]> result = interruptsRepository.getInterruptsReportMonthly(serverId);
         return mapToObject(result);
     }
-
-
 
     private List<InterruptsReportMonthlyDto> mapToObject(List<Object[]> result) {
         return result.stream()
@@ -96,11 +89,5 @@ public class InterruptsServiceImpl implements InterruptsService {
         Integer interruptCount = row[1] != null ? (Integer) row[1] : null;
         return new InterruptsReportDailyDto(day, interruptCount != null ? interruptCount.intValue() : null);
     }
-    
-
-
-   
-
-
 
 }

@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = {"verificationId"})
+@EqualsAndHashCode(of = { "verificationId" })
 @ToString
 @Entity
 @Table(name = "UserVerificationCodes")
@@ -27,5 +27,4 @@ public class UserVerificationCode {
     @JoinColumn(name = "userid", nullable = false)
     private Users userid;
 
-   
 }

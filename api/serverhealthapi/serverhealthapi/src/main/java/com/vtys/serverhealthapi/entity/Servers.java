@@ -10,14 +10,14 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = {"serverid"})
+@EqualsAndHashCode(of = { "serverid" })
 @ToString
 @Entity
-@Table(name = "Servers")  // Specify the table name if it's different from the entity name
+@Table(name = "Servers") // Specify the table name if it's different from the entity name
 public class Servers {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Use IDENTITY strategy for MSSQL
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Use IDENTITY strategy for MSSQL
     private Integer serverid;
 
     @Column(name = "servername", length = 50, nullable = false)
@@ -32,7 +32,6 @@ public class Servers {
     private String serverStorageCapacity;
 
     // TODO JSON IGNORE YAPILDI, HATA VEREBİLİR İLERİDE
-
 
     @ManyToOne
     @JoinColumn(name = "hostpitalid")

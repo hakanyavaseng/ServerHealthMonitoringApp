@@ -12,5 +12,4 @@ public class InterruptsReportDailyDto {
         this.interruptCount = interruptCount;
     }
 
-    
 }
