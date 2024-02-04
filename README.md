@@ -81,7 +81,7 @@ Uygulama ile ilgili geri bildirimleriniz için kişisel mail adreslerimizden ula
 <pre> 
     <b>Hakan YAVAŞ:</b> <a href="mailto:hakanyavaseng@gmail.com ">hakanyavaseng@gmail.com</a>
     <b>Emre KART:</b> <a href="mailto:kartemre3403@gmail.com ">kartemre3403@gmail.com</a>
-    <b>Alperen Güneş:</b> <a href="mailto:alperenmanavgat@gmail.com ">alperenmanavgat@gmail.com</a>
+    <b>Alperen GÜNEŞ:</b> <a href="mailto:alperenmanavgat@gmail.com ">alperenmanavgat@gmail.com</a>
 </pre>
    
 
