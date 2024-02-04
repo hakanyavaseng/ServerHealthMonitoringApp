@@ -84,23 +84,23 @@ Uygulama ile ilgili geri bildirimleriniz için kişisel mail adreslerimizden ula
   
 ## Anahtar Kelimeler
 
-Sunucu İzleme
-Mobil Uygulama
-Sağlık Durumu Takibi
-Java
-Kotlin
-Spring Boot
-Hibernate
-JPA
-Postman
-Docker
-Intellij IDEA
-Visual Studio Code
-Android Studio
-Sağlık Durumu İzleme
-SQL Server
-MSSQL
-Veritabanı Yönetimi
-Retrofit
-Backend-Frontend İletişimi
+Sunucu İzleme,
+Mobil Uygulama,
+Sağlık Durumu Takibi,
+Java,
+Kotlin,
+Spring Boot,
+Hibernate,
+JPA,
+Postman,
+Docker,
+Intellij IDEA,
+Visual Studio Code,
+Android Studio,
+Sağlık Durumu İzleme,
+SQL Server,
+MSSQL,
+Veritabanı Yönetimi,
+Retrofit,
+Backend-Frontend İletişimi,
 API Entegrasyonu
