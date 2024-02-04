@@ -9,7 +9,6 @@ yapmaktan kaynaklanan zorlukları ortadan kaldırmayı hedeflemektedir.
 
 
 
-
 ## Kullanılan Teknolojiler
 
 **İstemci:** Kotlin
@@ -18,13 +17,38 @@ yapmaktan kaynaklanan zorlukları ortadan kaldırmayı hedeflemektedir.
 
 **Veritabanı:** Microsoft SQL Server
 
+**Programlama Dilleri:** Java, Kotlin
+
+**Tasarım:** Figma, Adobe XD 
+
+**İş Takip:** Click Up
+
+**Kullanılan Mimariler:** Repository Pattern
+
+**API Test:** Postman
+
+**Veritabanı Arayüzü:** SQL Server Management Studio
+
+**Veritabanı:** MSSQL
+
+**Veritabanı ER Diyagram Tasarımı:** Visual Paradigm
+
+**IDE:** Intellij IDEA, Visual Studio Code, Android Studio
+
+
   
-## Ekran Görüntüleri
+## Uygulama Ekran Görüntüleri
 
 ![Uygulama Ekran Görüntüsü](https://i.ibb.co/SNgPWPZ/Whats-App-Image-2024-02-04-at-12-38-14.jpg)
 ![Uygulama Ekran Görüntüsü](https://i.ibb.co/FYHvqFM/Whats-App-Image-2024-02-04-at-12-38-14-1.jpg)
 ![Uygulama Ekran Görüntüsü](https://i.ibb.co/WzBGjw1/Whats-App-Image-2024-02-04-at-12-38-15.jpg)
 ![Uygulama Ekran Görüntüsü](https://i.ibb.co/QH8f29d/Whats-App-Image-2024-02-04-at-12-38-15-1.jpg)
+
+
+
+## ER Diyagram
+
+![ER Diyagram Ekran Görüntüsü](https://i.ibb.co/sjgSt2C/database-ER-diagram.png]
 
 
   
@@ -37,14 +61,46 @@ yapmaktan kaynaklanan zorlukları ortadan kaldırmayı hedeflemektedir.
   => Client üzerinde Google OAuth2 ile Google Login servisi, file import/export işlemleri
 </pre>
 
-  
+**Emre KART - [@kartemre](https://www.github.com/kartemre):**
+<pre>
+  => Gereksinim analizi yapılması.
+  => Gereksinimlere göre veritabanı ER diyagram tasarımı.
+  => Sunucu ekleme sayfasının entegrasyonu
+  => Android studio üzerinden uygulama arayüzü yedek protatip tasarımları.
+  => Raporlama ve sunum.
+</pre>
+
+
+
 ## Geri Bildirim
 
 Uygulama ile ilgili geri bildirimleriniz için kişisel mail adreslerimizden ulaşım sağlayabilirsiniz. 
 <pre> 
     <b>Hakan YAVAŞ:</b> <a href="mailto:hakanyavaseng@gmail.com ">hakanyavaseng@gmail.com</a>
-
+    <b>Emre KART:</b> <a href="mailto:kartemre3403@gmail.com ">kartemre3403@gmail.com</a>
 </pre>
    
+
   
 ## Anahtar Kelimeler
+
+Sunucu İzleme
+Mobil Uygulama
+Sağlık Durumu Takibi
+Java
+Kotlin
+Spring Boot
+Hibernate
+JPA
+Postman
+Docker
+Intellij IDEA
+Visual Studio Code
+Android Studio
+Sağlık Durumu İzleme
+SQL Server
+MSSQL
+Veritabanı Yönetimi
+Retrofit
+Backend-Frontend İletişimi
+API Entegrasyonu
