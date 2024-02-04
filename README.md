@@ -56,11 +56,11 @@ yapmaktan kaynaklanan zorlukları ortadan kaldırmayı hedeflemektedir.
 
 **Emre KART - [@kartemre](https://www.github.com/kartemre):**
 <pre>
-  => Gereksinim analizi yapılması.
-  => Gereksinimlere göre veritabanı ER diyagram tasarımı.
+  => Gereksinim analizi yapılması
+  => Gereksinimlere göre veritabanı ER diyagram tasarımı
   => Sunucu ekleme sayfasının entegrasyonu
-  => Android studio üzerinden uygulama arayüzü yedek protatip tasarımları.
-  => Raporlama ve sunum.
+  => Android studio üzerinden uygulama arayüzü yedek prototip tasarımları
+  => Raporlama ve sunum
 </pre>
 
 **ALPEREN GÜNEŞ - [@Sunnrise](https://www.github.com/Sunnrise):**
