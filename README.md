@@ -48,7 +48,7 @@ yapmaktan kaynaklanan zorlukları ortadan kaldırmayı hedeflemektedir.
 
 ## ER Diyagram
 
-![ER Diyagram Ekran Görüntüsü](https://i.ibb.co/sjgSt2C/database-ER-diagram.png]
+![ER Diyagram Ekran Görüntüsü](https://i.ibb.co/sjgSt2C/database-ER-diagram.png)
 
 
   
