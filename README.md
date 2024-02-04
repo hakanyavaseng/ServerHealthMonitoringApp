@@ -44,13 +44,6 @@ yapmaktan kaynaklanan zorlukları ortadan kaldırmayı hedeflemektedir.
 ![Uygulama Ekran Görüntüsü](https://i.ibb.co/WzBGjw1/Whats-App-Image-2024-02-04-at-12-38-15.jpg)
 ![Uygulama Ekran Görüntüsü](https://i.ibb.co/QH8f29d/Whats-App-Image-2024-02-04-at-12-38-15-1.jpg)
 
-
-
-## ER Diyagram
-
-![ER Diyagram Ekran Görüntüsü](https://i.ibb.co/sjgSt2C/database-ER-diagram.png)
-
-
   
 ## Ekip Üyeleri
 **Hakan YAVAŞ - [@hakanyavaseng](https://www.github.com/hakanyavaseng):**
@@ -70,6 +63,16 @@ yapmaktan kaynaklanan zorlukları ortadan kaldırmayı hedeflemektedir.
   => Raporlama ve sunum.
 </pre>
 
+**ALPEREN GÜNEŞ - [@Sunnrise](https://www.github.com/Sunnrise):**
+<pre>
+  => Uygulama logo ve arayüz tasarımının Figma üzerinden yapılması
+  => Uygulama tasarımının Kotlin'e entegre edilmesi
+  => Uygulama giriş, kayıt, doğrulama işlemlerinin API servisi için hazır hale getirilmesi
+  => Server Detay kısmının tasarlanması ve gerekli API servis istekleri araclığıyla bilgilerin görüntülenmesi
+  => Diğer API istekleri için gerekli olan yapıların Client üzerinde kurulması
+  => Belirli bir standart çerçevesinde Kullanıcı Arayüzü(UI) geliştirmelerinin yapılması
+</pre>
+
 
 
 ## Geri Bildirim
@@ -78,6 +81,7 @@ Uygulama ile ilgili geri bildirimleriniz için kişisel mail adreslerimizden ula
 <pre> 
     <b>Hakan YAVAŞ:</b> <a href="mailto:hakanyavaseng@gmail.com ">hakanyavaseng@gmail.com</a>
     <b>Emre KART:</b> <a href="mailto:kartemre3403@gmail.com ">kartemre3403@gmail.com</a>
+    <b>Alperen Güneş:</b> <a href="mailto:alperenmanavgat@gmail.com ">alperenmanavgat@gmail.com</a>
 </pre>
    
 
